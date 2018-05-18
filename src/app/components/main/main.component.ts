@@ -13,6 +13,8 @@ import { map, catchError } from "rxjs/operators"
 })
 export class MainComponent implements OnInit {
 
+  contributions = [];
+
   constructor(private httpService:HttpService) { 
 
   }
@@ -20,6 +22,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.httpService.getContributions().then(data => {
       console.log("data",data );
+      this.contributions = data['contributions'];
     }).catch(err => {
       console.log("error:", err);
     })
