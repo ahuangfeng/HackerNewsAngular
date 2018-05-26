@@ -13,6 +13,9 @@ import { SubmitComponent } from './pages/submit/submit.component';
 import { UserComponent } from './pages/user/user.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FullContributionComponent } from './pages/full-contribution/full-contribution.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { FullContributionComponent } from './pages/full-contribution/full-contri
       appRoutes
     ),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase, 'hnangular'),
+    AngularFireAuthModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

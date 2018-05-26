@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 // import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
 
@@ -11,7 +11,6 @@ const httpOptions = {
     'Authorization': 'e6d4c8c9cb766bce8b273174ab379195'
   })
 };
-
 
 @Injectable({
   providedIn: 'root'
