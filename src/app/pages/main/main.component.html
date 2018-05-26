@@ -1,5 +1,26 @@
-<p>
-  main works!
-</p>
-
-<div *ngFor="let contribution of contributions">{{contribution.url}}</div>
+<div class="main-component" >
+  <ol>
+      <li *ngFor="let contribution of contributions">
+        <p>
+          <a class="score">
+            {{contribution.points}}
+          </a>
+          <a class="title" href="{{contribution.url}}">
+            {{contribution.title}}
+          </a>
+          (<a class="domain" href="{{contribution.url}}">
+            {{contribution.url}}
+          </a>)
+          by <a class="username" routerLink="/user" routerLinkActive="active">
+            @{{contribution.username}}
+          </a> <!-- el routerLink ha de portar al perfil-->
+          <a class="created">
+            {{contribution.created_at}}
+          </a>
+          | <a class="num_comm" routerLink="/contribution" routerLinkActive="active">
+            {{contribution.numComments}} comments
+          </a> <!--el routerLink ha de portar a la contribució en concret-->
+        </p>
+      </li>
+  </ol>
+</div>
