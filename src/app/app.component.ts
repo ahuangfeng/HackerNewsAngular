@@ -13,4 +13,9 @@ export class AppComponent {
   login(){
     this.authService.login();
   }
+
+  isLoggedIn(){
+    // TODO: en aquesta versió no fa polling i per tant s'ha de fer refresh o algo per a actualitzar
+    return this.authService.isLoggedIn();
+  }
 }

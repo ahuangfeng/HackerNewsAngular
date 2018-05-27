@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Libraries
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
+import { JwtModule } from '@auth0/angular-jwt';
 
 // App root
 import { AppComponent } from './app.component';
@@ -20,7 +21,6 @@ import { ThreadsComponent } from './pages/threads/threads.component';
 import { AskComponent } from './pages/ask/ask.component';
 import { SubmitComponent } from './pages/submit/submit.component';
 import { UserComponent } from './pages/user/user.component';
-import { LoginComponent } from './pages/login/login.component';
 import { FullContributionComponent } from './pages/full-contribution/full-contribution.component';
 
 // Components
@@ -35,7 +35,6 @@ import { SingleContributionComponent } from './components/single-contribution/si
     AskComponent,
     SubmitComponent,
     UserComponent,
-    LoginComponent,
     FullContributionComponent,
     SingleContributionComponent,
   ],
@@ -43,8 +42,17 @@ import { SingleContributionComponent } from './components/single-contribution/si
     RouterModule.forRoot(
       appRoutes
     ),
-    BrowserModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () =>{
+          return localStorage.getItem('access_token');
+        },
+        headerName: 'Authorization'
+        // whitelistedDomains: ['localhost:4200']
+      }
+    }),
+    BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'hnangular'),
     AngularFireAuthModule
   ],
