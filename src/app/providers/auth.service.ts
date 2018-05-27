@@ -7,19 +7,27 @@ import { auth } from 'firebase';
 })
 export class AuthService {
 
-  credentials = undefined;
+  private credentials = undefined;
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth) { 
+    var token = localStorage.getItem('access_token');
+    if(token){
+      this.credentials = token;
+    }
+  }
+
+  setCredentials(credentials){
+    this.credentials = credentials.accessToken;
+    localStorage.setItem('access_token', credentials.accessToken);
+  }
 
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider()).then(callback => {
-      console.log("callback:", callback);
-      // TODO: guargar en localStorage: 'access_token'
-      this.credentials = callback;
-      console.log("CREDENTIALS:", this.credentials);
-    }).catch(err => {
-      console.log("EROO:", err);
-    });
+    return this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
+  }
+
+  logout(){
+    this.credentials = undefined;
+    localStorage.removeItem('access_token');
   }
 
   isLoggedIn() {

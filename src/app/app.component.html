@@ -19,14 +19,17 @@
           <a routerLink="/ask" class="nav-link" routerLinkActive="active">Ask</a>
         </li>
         <li class="nav-item">
-          <a routerLink="/submit" class="nav-link" routerLinkActive="active">Submit</a>
+          <a (click)="submit()" class="nav-link pointer" routerLinkActive="active">Submit</a>
         </li>
       </ul>
       <ul class="navbar-nav">
         <li *ngIf="isLoggedIn()">
           <a routerLink="/user" class="nav-link" routerLinkActive="active">User</a>
         </li>
-        <li>
+        <li *ngIf="isLoggedIn()">
+          <a class="nav-link pointer" (click)="logout()">Logout</a>
+        </li>
+        <li *ngIf="!isLoggedIn()">
           <a class="nav-link pointer" (click)="login()">Login</a>
         </li>
       </ul>
