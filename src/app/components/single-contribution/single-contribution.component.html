@@ -1,0 +1,24 @@
+<div class="item-block">
+  <div style="margin-bottom: 0px;">
+    <div>
+      <a class="title" href="{{contribution.url}}">
+        {{contribution.title}}
+      </a>
+      <span class="domain">({{extractRootDomain(contribution.url)}})</span>
+    </div>
+    <div class="subtext-laptop">
+      <span>
+        {{contribution.points}} points by
+        <a routerLink="/user" routerLinkActive="active">@{{contribution.username}}</a>
+      </span>
+      <span class="item-details">
+        {{contribution.created_at}}
+        <span> |
+          <a routerLink="/contribution" routerLinkActive="active">
+            {{contribution.numComments}} comments
+          </a>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>

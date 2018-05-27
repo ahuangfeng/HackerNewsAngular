@@ -1,0 +1,9 @@
+.post{
+  padding: 10px 0 10px 5px;
+  border-bottom: 1px solid #cececb
+}
+
+li{
+  display: list-item;
+  text-align: -webkit-match-parent
+}

@@ -1,0 +1,35 @@
+.item-block {
+    display: block;
+}
+
+.title {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 16px;
+    color: #535353;
+    text-decoration: none;
+}
+
+.domain {
+    color: #696969;
+    letter-spacing: .5px;
+}
+
+.subtext-laptop{
+  font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    a {
+        color: #b92b27;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #696969;
+    }
+    .details {
+        margin-top: 5px;
+        .right {
+            float: right;
+        }
+    }
+}
