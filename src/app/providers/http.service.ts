@@ -23,4 +23,8 @@ export class HttpService {
     return this.http.get(environment.apiServer + 'contributions',httpOptions).toPromise();
   }
 
+  getNewContributions(){
+    return this.http.get(environment.apiServer + 'contributions?type=new',httpOptions).toPromise();
+  }
+
 }

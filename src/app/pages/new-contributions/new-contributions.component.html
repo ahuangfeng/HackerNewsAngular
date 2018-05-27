@@ -1,3 +1,8 @@
-<p>
-  new-contributions works!
-</p>
+<div class="new-contributions-component" >
+  <ol>
+      <li class="post" *ngFor="let contribution of contributions">
+        <!-- Cada linia de contribució la crea aquest component a /components/single-contribution.component.html -->
+        <single-contribution [contribution]="contribution"></single-contribution>
+      </li>
+  </ol>
+</div>

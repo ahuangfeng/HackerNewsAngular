@@ -1,11 +1,16 @@
 <div class="item-block">
   <div style="margin-bottom: 0px;">
-    <div>
+    <div *ngIf="contribution.url != undefined; else text">
       <a class="title" href="{{contribution.url}}">
         {{contribution.title}}
       </a>
       <span class="domain">({{extractRootDomain(contribution.url)}})</span>
     </div>
+    <ng-template #text>
+      <a class="title" routerLink="/contribution" routerLinkActive="active">
+        {{contribution.title}}
+      </a>
+    </ng-template>
     <div class="subtext-laptop">
       <span>
         {{contribution.points}} points by

@@ -8,7 +8,7 @@ import { Contribution } from '../../model/contribution';
 })
 export class SingleContributionComponent implements OnInit {
 
-  @Input() contribution: Contribution;
+  @Input() contribution: any;
   
   constructor() { }
 
