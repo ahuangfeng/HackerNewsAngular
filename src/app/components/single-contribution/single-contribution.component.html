@@ -1,26 +1,26 @@
 <div class="item-block">
   <div style="margin-bottom: 0px;">
-    <div *ngIf="contribution.url != undefined; else text">
-      <a class="title" href="{{contribution.url}}">
-        {{contribution.title}}
+    <div *ngIf="contributionShow.hasUrl(); else text">
+      <a class="title" href="{{contributionShow.url}}">
+        {{contributionShow.title}}
       </a>
-      <span class="domain">({{extractRootDomain(contribution.url)}})</span>
+      <span class="domain">({{contributionShow.domain()}})</span>
     </div>
     <ng-template #text>
       <a class="title" routerLink="/contribution" routerLinkActive="active">
-        {{contribution.title}}
+        {{contributionShow.title}}
       </a>
     </ng-template>
     <div class="subtext-laptop">
       <span>
-        {{contribution.points}} points by
-        <a routerLink="/user" routerLinkActive="active">@{{contribution.username}}</a>
+        {{contributionShow.points}} points by
+        <a routerLink="/user" routerLinkActive="active">@{{contributionShow.username}}</a>
       </span>
       <span class="item-details">
-        {{contribution.created_at}}
+        {{contributionShow.created_at}}
         <span> |
           <a routerLink="/contribution" routerLinkActive="active">
-            {{contribution.numComments}} comments
+            {{contributionShow.numComments}} comments
           </a>
         </span>
       </span>

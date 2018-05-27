@@ -10,33 +10,60 @@ export class Contribution {
   user_id: string;
   username: string;
 
-  hasUrl: boolean;
-
   constructor(
-    created_at: string,
-    id: string,
-    numComments: number,
-    points: number,
-    text: string,
-    title: string,
-    url: string,
-    user_id: string,
-    username: string
-  ) {
-    this.created_at = created_at;
-    this.id = id;
-    this.numComments = numComments;
-    this.points = points;
-    this.text = text;
-    this.title = title;
-    this.url = url;
-    this.user_id = user_id;
-    this.username = username;
-    if (this.url != '') {
-      this.hasUrl = true;
-    } else {
-      this.hasUrl = false;
+    init?: {
+      created_at: string,
+      id: string,
+      numComments: number,
+      points: number,
+      text: string,
+      title: string,
+      url: string,
+      user_id: string,
+      username: string
     }
+  ) {
+    if (init) Object.assign(this, init);
+  }
+
+  hasUrl(){
+    return this.url != undefined;
+  }
+
+  hostname() {
+    var url = this.url;
+    var hostname;
+    //find & remove protocol (http, ftp, etc.) and get hostname
+    if (url.indexOf("://") > -1) {
+      hostname = url.split('/')[2];
+    }
+    else {
+      hostname = url.split('/')[0];
+    }
+    //find & remove port number
+    hostname = hostname.split(':')[0];
+    //find & remove "?"
+    hostname = hostname.split('?')[0];
+
+    return hostname;
+  }
+
+  domain() {
+    var domain = this.hostname(),
+      splitArr = domain.split('.'),
+      arrLen = splitArr.length;
+
+    //extracting the root domain here
+    //if there is a subdomain 
+    if (arrLen > 2) {
+      domain = splitArr[arrLen - 2] + '.' + splitArr[arrLen - 1];
+      //check to see if it's using a Country Code Top Level Domain (ccTLD) (i.e. ".me.uk")
+      if (splitArr[arrLen - 2].length == 2 && splitArr[arrLen - 1].length == 2) {
+        //this is using a ccTLD
+        domain = splitArr[arrLen - 3] + '.' + domain;
+      }
+    }
+    return domain;
   }
 
 }
