@@ -1,11 +1,20 @@
+// Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { MainComponent } from './pages/main/main.component';
 import { RouterModule } from '@angular/router';
-import { appRoutes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
+
+// Libraries
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+
+// App root
+import { AppComponent } from './app.component';
+import { appRoutes } from './app.routes';
+import { environment } from '../environments/environment';
+
+// Pages
+import { MainComponent } from './pages/main/main.component';
 import { NewContributionsComponent } from './pages/new-contributions/new-contributions.component';
 import { ThreadsComponent } from './pages/threads/threads.component';
 import { AskComponent } from './pages/ask/ask.component';
@@ -13,9 +22,9 @@ import { SubmitComponent } from './pages/submit/submit.component';
 import { UserComponent } from './pages/user/user.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FullContributionComponent } from './pages/full-contribution/full-contribution.component';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireModule } from 'angularfire2';
-import { environment } from '../environments/environment';
+
+// Components
+import { SingleContributionComponent } from './components/single-contribution/single-contribution.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +37,7 @@ import { environment } from '../environments/environment';
     UserComponent,
     LoginComponent,
     FullContributionComponent,
+    SingleContributionComponent,
   ],
   imports: [
     RouterModule.forRoot(
