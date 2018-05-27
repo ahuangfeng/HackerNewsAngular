@@ -26,6 +26,10 @@ import { FullContributionComponent } from './pages/full-contribution/full-contri
 // Components
 import { SingleContributionComponent } from './components/single-contribution/single-contribution.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,9 +49,7 @@ import { SingleContributionComponent } from './components/single-contribution/si
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () =>{
-          return localStorage.getItem('access_token');
-        },
+        tokenGetter: tokenGetter,
         headerName: 'Authorization'
         // whitelistedDomains: ['localhost:4200']
       }
