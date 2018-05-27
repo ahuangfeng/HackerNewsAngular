@@ -5,5 +5,10 @@
 
 li{
   display: list-item;
-  text-align: -webkit-match-parent
+  text-align: -webkit-match-parent;
+}
+
+ol{
+  padding: 0 40px;
+  margin: 0;
 }
