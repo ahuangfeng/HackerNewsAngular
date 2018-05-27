@@ -1,26 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth } from 'firebase';
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+@Injectable({
+  providedIn: 'root'
 })
-export class LoginComponent implements OnInit {
+export class AuthService {
+
+  credentials;
 
   constructor(public afAuth: AngularFireAuth) { }
 
-  ngOnInit() {
-    this.login();
-  }
-  
   login() {
     this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider()).then(callback => {
       console.log("callback:", callback);
+      this.credentials = callback;
     }).catch(err => {
       console.log("EROO:", err);
     }); 
   }
-
 }

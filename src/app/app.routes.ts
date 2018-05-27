@@ -5,7 +5,6 @@ import { ThreadsComponent } from './pages/threads/threads.component';
 import { AskComponent } from './pages/ask/ask.component';
 import { SubmitComponent } from './pages/submit/submit.component';
 import { UserComponent } from './pages/user/user.component';
-import { LoginComponent } from './pages/login/login.component';
 import { FullContributionComponent } from './pages/full-contribution/full-contribution.component';
 
 export const appRoutes: Routes = [
@@ -20,6 +19,5 @@ export const appRoutes: Routes = [
   { path: 'threads', component: ThreadsComponent },
   { path: 'ask', component: AskComponent },
   { path: 'submit', component: SubmitComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'user', component: UserComponent }
 ];

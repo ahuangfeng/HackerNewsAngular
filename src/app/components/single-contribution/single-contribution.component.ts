@@ -13,7 +13,7 @@ export class SingleContributionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log("-->",this.extractRootDomain(this.contribution.url));
+
   }
 
   extractHostname(url) {
