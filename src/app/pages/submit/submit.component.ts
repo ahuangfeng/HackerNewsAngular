@@ -5,8 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './submit.component.html',
   styleUrls: ['./submit.component.css']
 })
+
 export class SubmitComponent implements OnInit {
 
+  changeTitle(title) {
+    console.log(title);
+  }
   constructor() { }
 
   ngOnInit() {

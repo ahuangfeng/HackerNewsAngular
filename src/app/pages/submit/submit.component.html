@@ -1,3 +1,17 @@
-<p>
-  submit works!
-</p>
+<div>
+  <h1>
+    New contribution!
+  </h1>
+  <label for="title">title </label>
+  <input id ="title" class="widthInput" (ngModel)="changeTitle($event)"><br>
+  <label for="url">url </label>
+  <input id ="url" class="widthInput2"><br>
+  <p class="or">or</p>
+  <label for="ask" class="ask">ask</label>
+  <textarea class="text" id="ask" rows="4" cols="70"></textarea><br>
+  <button class="button">submit</button>
+  <p class="info">Leave url blank to submit a question for discussion. If there is no url, the text (if any) will appear at the top of the thread.</p>
+
+</div>
+
+
