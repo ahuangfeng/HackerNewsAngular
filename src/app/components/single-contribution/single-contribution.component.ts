@@ -1,3 +1,4 @@
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Contribution } from '../../model/contribution';
 
@@ -11,9 +12,9 @@ export class SingleContributionComponent implements OnInit {
   @Input() contribution: any;
 
   contributionShow: Contribution;
-  
+
   constructor() { }
-  
+
   ngOnInit() {
     this.contributionShow = new Contribution(this.contribution);
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../../providers/http.service';
+
 
 @Component({
   selector: 'app-ask',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AskComponent implements OnInit {
 
-  constructor() { }
+  contributions = [];
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getAskContributions().then(data => {
+      console.log("data", data);
+      this.contributions = data['contributions'];
+    }).catch(err => {
+      console.log("error:", err);
+    })
   }
 
 }

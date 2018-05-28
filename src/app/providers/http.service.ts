@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { map, filter, catchError, mergeMap } from 'rxjs/operators';
-// import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -25,6 +23,10 @@ export class HttpService {
 
   getNewContributions(){
     return this.http.get(environment.apiServer + 'contributions?type=new',httpOptions).toPromise();
+  }
+
+  getAskContributions(){
+    return this.http.get(environment.apiServer + 'contributions?type=ask',httpOptions).toPromise();
   }
 
 }
