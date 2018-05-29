@@ -34,3 +34,8 @@
   position: absolute;
   margin-top: 3%;
 }
+
+.Warning {
+  visibility: hidden;
+  color: red;
+}
