@@ -25,12 +25,12 @@ export class HttpService {
     return this.http.get(environment.apiServer + 'contributions?type=new',httpOptions).toPromise();
   }
 
-  getAskContributions(){
+  getAskContributions() {
     return this.http.get(environment.apiServer + 'contributions?type=ask',httpOptions).toPromise();
   }
 
-  postNewContributions(contribution) {
-    return this.http.post(environment.apiServer + 'contributions',httpOptions, contribution).toPromise();
+  postNewContributions(title, url, text) {
+    return this.http.post(environment.apiServer + 'contributions',{title, url, text}, httpOptions).toPromise();
 
   }
 
