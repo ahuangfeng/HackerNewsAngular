@@ -25,6 +25,7 @@ import { FullContributionComponent } from './pages/full-contribution/full-contri
 
 // Components
 import { SingleContributionComponent } from './components/single-contribution/single-contribution.component';
+import { SingleCommentComponent } from './components/single-comment/single-comment.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -41,6 +42,7 @@ export function tokenGetter() {
     UserComponent,
     FullContributionComponent,
     SingleContributionComponent,
+    SingleCommentComponent,
   ],
   imports: [
     RouterModule.forRoot(

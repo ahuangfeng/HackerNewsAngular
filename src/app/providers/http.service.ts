@@ -34,4 +34,12 @@ export class HttpService {
 
   }
 
+  getComments(contribution_id) {
+    console.log(contribution_id);
+    return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments',  httpOptions).toPromise();
+
+  }
+
+
+
 }

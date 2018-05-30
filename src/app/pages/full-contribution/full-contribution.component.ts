@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from "../../providers/http.service";
 
 @Component({
   selector: 'app-full-contribution',
@@ -7,12 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FullContributionComponent implements OnInit {
 
-  /**
-   * TODO: Mostrara la contribution amb els comentaris y replies --> falta posar el router a contribution/:id
-   */
-  constructor() { }
+  comments;
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
+    this.httpService.getComments("4").then(data => {
+      console.log("data", data['comments']);
+      this.comments = data['comments'];
+
+    }).catch(err => {
+      console.log("error:", err);
+    })
   }
 
 }
