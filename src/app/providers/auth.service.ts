@@ -10,17 +10,26 @@ import { credentials } from './credentials';
 export class AuthService {
 
   // private credentials = undefined;
+  currentUserID;
 
   constructor(public afAuth: AngularFireAuth, public httpService:HttpService) { 
     var token = localStorage.getItem('access_token');
+
     if(token){
       credentials.setToken(token);
     }
+    this.currentUserID = localStorage.getItem("UserID");
   }
 
-  setCredentials(token){
-    credentials.setToken(token);
-    localStorage.setItem('access_token', token);
+  getCurrentUserId(){
+    return this.currentUserID;
+  }
+
+  setCredentials(userCredential){
+    credentials.setToken(userCredential.api_key);
+    localStorage.setItem('access_token', userCredential.api_key);
+    this.currentUserID = userCredential.id;
+    localStorage.setItem('UserID', userCredential.id);
   }
 
   login() {
@@ -34,6 +43,8 @@ export class AuthService {
   logout(){
     credentials.setToken(undefined);
     localStorage.removeItem('access_token');
+    this.currentUserID = undefined;
+    localStorage.removeItem('UserID');
   }
 
   isLoggedIn() {

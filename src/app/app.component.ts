@@ -26,13 +26,18 @@ export class AppComponent {
         var secret = callback.credential.secret; //provider, uid, nickname, token, secret
         return this.authService.loginToOurServer(provider, uid, nickname, token, secret);
       }).then(userConnected => {
-        this.authService.setCredentials(userConnected['user'].api_key);
+        this.authService.setCredentials(userConnected['user']);
         // TODO: mirar si es pot fer sense refresh... Puto Angular6, no funciona com el 5....xD
         window.location.reload();
       }).catch(err => {
         console.log("Error:", err);
       });
     }
+  }
+
+  me(){
+    // TODO: si hi ha un /user/1, i faig el meu user no funciona
+    this.router.navigateByUrl('/user/'+this.authService.currentUserID);
   }
 
   logout(){
@@ -56,7 +61,7 @@ export class AppComponent {
         var secret = callback.credential.secret; //provider, uid, nickname, token, secret
         return this.authService.loginToOurServer(provider, uid, nickname, token, secret);
       }).then(userConnected => {
-        this.authService.setCredentials(userConnected['user'].api_key);
+        this.authService.setCredentials(userConnected['user']);
         this.router.navigateByUrl('/submit');
         // TODO: mirar si es pot fer sense refresh... Puto Angular6, no funciona com el 5....xD
         window.location.reload();

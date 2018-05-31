@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Libraries
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
-import { JwtModule } from '@auth0/angular-jwt';
+// import { JwtModule } from '@auth0/angular-jwt';
 
 // App root
 import { AppComponent } from './app.component';
@@ -28,9 +28,9 @@ import { FullContributionComponent } from './pages/full-contribution/full-contri
 import { SingleContributionComponent } from './components/single-contribution/single-contribution.component';
 import { SingleCommentComponent } from './components/single-comment/single-comment.component';
 
-export function tokenGetter() {
-  return localStorage.getItem('access_token');
-}
+// export function tokenGetter() {
+//   return localStorage.getItem('access_token');
+// }
 
 @NgModule({
   declarations: [
@@ -50,13 +50,13 @@ export function tokenGetter() {
       appRoutes
     ),
     HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        headerName: 'Authorization'
-        // whitelistedDomains: ['localhost:4200']
-      }
-    }),
+    // JwtModule.forRoot({
+    //   config: {
+    //     tokenGetter: tokenGetter,
+    //     headerName: 'Authorization'
+    //     // whitelistedDomains: ['localhost:4200']
+    //   }
+    // }),
     BrowserModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'hnangular'),

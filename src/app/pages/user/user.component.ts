@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from 'src/app/providers/http.service';
 import { User } from '../../model/user';
+import { AuthService } from '../../providers/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +15,7 @@ export class UserComponent implements OnInit {
   @Input() user: any;
   userRender:User;
 
-  constructor(private httpService: HttpService, private route: ActivatedRoute) { }
+  constructor(private httpService: HttpService, private route: ActivatedRoute, public authService:AuthService) { }
 
   ngOnInit() {
     if(this.user != undefined){
