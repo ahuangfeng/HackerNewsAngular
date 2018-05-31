@@ -1,8 +1,14 @@
-<div class="main-component" >
-  <ol>
-      <li class="post" *ngFor="let contribution of contributions">
-        <!-- Cada linia de contribució la crea aquest component a /components/single-contribution.component.html -->
+<div class="main-component">
+  <div>
+    <div class="post" *ngFor="let contribution of contributions; let i = index">
+      <div style="float: left; width: 30px;">
+        {{i}}.
+      </div>
+      <!-- Cada linia de contribució la crea aquest component a /components/single-contribution.component.html -->
+      <div>
         <single-contribution [contribution]="contribution"></single-contribution>
-      </li>
-  </ol>
+      </div>
+
+    </div>
+  </div>
 </div>

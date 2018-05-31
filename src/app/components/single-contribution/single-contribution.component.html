@@ -11,6 +11,20 @@
         {{contributionShow.title}}
       </a>
     </ng-template>
+
+    <div class="subtext-palm">
+        <div class="details">
+          <span class="name"><a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a></span>
+          <span class="right">{{contributionShow.points}} ★</span>
+        </div>
+        <div class="details">
+        {{ contributionShow.created_at }}
+        <a routerLink="contribution" routerLinkActive="active" class="comment-number" > •
+          {{contributionShow.numComments }} comments
+        </a>
+        </div>
+    </div>
+
     <div class="subtext-laptop">
       <span>
         {{contributionShow.points}} points by
