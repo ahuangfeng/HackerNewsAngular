@@ -19,5 +19,5 @@ export const appRoutes: Routes = [
   { path: 'threads', component: ThreadsComponent },
   { path: 'ask', component: AskComponent },
   { path: 'submit', component: SubmitComponent },
-  { path: 'user', component: UserComponent }
+  { path: 'user/:id', component: UserComponent }
 ];

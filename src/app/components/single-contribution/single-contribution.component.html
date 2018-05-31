@@ -14,7 +14,7 @@
     <div class="subtext-laptop">
       <span>
         {{contributionShow.points}} points by
-        <a routerLink="/user" routerLinkActive="active">@{{contributionShow.username}}</a>
+        <a routerLink="/user/{{contributionShow.user_id}}" routerLinkActive="active">@{{contributionShow.username}}</a>
       </span>
       <span class="item-details">
         {{contributionShow.created_at}}
