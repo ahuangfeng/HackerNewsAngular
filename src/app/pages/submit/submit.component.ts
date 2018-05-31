@@ -12,9 +12,6 @@ import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl } from
 
 export class SubmitComponent implements OnInit {
 
-  title;
-  url;
-  ask;
   errorMessage;
 
   submitForm = new FormGroup({
@@ -26,18 +23,6 @@ export class SubmitComponent implements OnInit {
   constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
-  }
-
-  changeTitle(newValue) {
-    this.title = newValue;
-  }
-
-  changeUrl(newValue) {
-    this.url = newValue;
-  }
-
-  changeAsk(newValue) {
-    this.ask = newValue;
   }
 
   createContribution() {
