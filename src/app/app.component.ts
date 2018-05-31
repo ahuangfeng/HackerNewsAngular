@@ -21,9 +21,9 @@ export class AppComponent {
         console.log("callback:", callback);
         this.authService.setCredentials(callback.credential);
         // TODO: mirar si es pot fer sense refresh... Puto Angular6, no funciona com el 5....xD
-        window.location.reload();
+        // window.location.reload();
       }).catch(err => {
-        console.log("EROO:", err);
+        console.log("Error:", err);
       });
     }
   }

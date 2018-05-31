@@ -25,6 +25,10 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(new auth.TwitterAuthProvider());
   }
 
+  loginToOurServer(){
+    
+  }
+
   logout(){
     this.credentials = undefined;
     localStorage.removeItem('access_token');
