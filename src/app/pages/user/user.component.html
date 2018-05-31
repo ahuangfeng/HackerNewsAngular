@@ -1,34 +1,34 @@
 
 <div class="user-component" >
-  <div style="margin-bottom: 0px;">
+  <div *ngIf="userRender != undefined" style="margin-bottom: 0px;">
     <p>
       <span class="tag">Username: </span>
       <a class="elem">
-        {{user.name}}
+        {{userRender.name}}
       </a>
     </p>
     <p>
       <span class="tag">Email: </span>
       <a class="elem">
-        {{user.email}}
+        {{userRender.email}}
       </a>
     </p>
     <p>
       <span class="tag">About: </span>
       <a class="elem">
-        {{user.about}}
+        {{userRender.about}}
       </a>
     </p>
     <p>
       <span class="tag">Created: </span>
       <a class="elem">
-        {{user.created_at}}
+        {{userRender.created_at}}
       </a>
     </p>
     <p>
       <span class="tag">Api-Key: </span>
       <a class="elem">
-        {{user.api_key}}
+        {{userRender.api_key}}
       </a>
     </p>
   </div>

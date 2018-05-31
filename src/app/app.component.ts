@@ -19,17 +19,25 @@ export class AppComponent {
     }else{
       this.authService.login().then(callback => {
         console.log("callback:", callback);
-        this.authService.setCredentials(callback.credential);
+        var provider = callback.additionalUserInfo.providerId;
+        var uid = callback.user.uid;
+        var nickname = callback.additionalUserInfo.username;
+        var token = callback.credential.accessToken;
+        var secret = callback.credential.secret; //provider, uid, nickname, token, secret
+        return this.authService.loginToOurServer(provider, uid, nickname, token, secret);
+      }).then(userConnected => {
+        this.authService.setCredentials(userConnected['user'].api_key);
         // TODO: mirar si es pot fer sense refresh... Puto Angular6, no funciona com el 5....xD
         window.location.reload();
       }).catch(err => {
-        console.log("EROO:", err);
+        console.log("Error:", err);
       });
     }
   }
 
   logout(){
     this.authService.logout();
+    this.router.navigateByUrl('/main');
   }
 
   isLoggedIn(){
@@ -41,13 +49,21 @@ export class AppComponent {
       this.router.navigateByUrl('/submit');
     }else{
       this.authService.login().then(callback => {
-        this.authService.setCredentials(callback);
+        var provider = callback.additionalUserInfo.providerId;
+        var uid = callback.user.uid;
+        var nickname = callback.additionalUserInfo.username;
+        var token = callback.credential.accessToken;
+        var secret = callback.credential.secret; //provider, uid, nickname, token, secret
+        return this.authService.loginToOurServer(provider, uid, nickname, token, secret);
+      }).then(userConnected => {
+        this.authService.setCredentials(userConnected['user'].api_key);
         this.router.navigateByUrl('/submit');
         // TODO: mirar si es pot fer sense refresh... Puto Angular6, no funciona com el 5....xD
         window.location.reload();
       }).catch(err => {
         console.error("Error: ", err);
-      })
+      });
     }
   }
+
 }

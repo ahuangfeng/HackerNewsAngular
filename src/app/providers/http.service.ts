@@ -2,13 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'e6d4c8c9cb766bce8b273174ab379195'
-  })
-};
+import { credentials } from './credentials';
 
 @Injectable({
   providedIn: 'root'
@@ -17,35 +11,45 @@ export class HttpService {
 
   constructor(public http: HttpClient) { }
 
-  getContributions() {
-    return this.http.get(environment.apiServer + 'contributions',httpOptions).toPromise();
+  private getHeaders(){
+    var token = credentials.getToken();
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'e6d4c8c9cb766bce8b273174ab379195'
+      })
+    };
+    return httpOptions;
   }
 
-  getNewContributions(){
-    return this.http.get(environment.apiServer + 'contributions?type=new',httpOptions).toPromise();
+  getContributions() {
+    return this.http.get(environment.apiServer + 'contributions', this.getHeaders()).toPromise();
+  }
+
+  getNewContributions() {
+    return this.http.get(environment.apiServer + 'contributions?type=new', this.getHeaders()).toPromise();
   }
 
   getAskContributions() {
-    return this.http.get(environment.apiServer + 'contributions?type=ask',httpOptions).toPromise();
+    return this.http.get(environment.apiServer + 'contributions?type=ask', this.getHeaders()).toPromise();
   }
 
   postNewContributions(title, url, text) {
-    return this.http.post(environment.apiServer + 'contributions',{title, url, text}, httpOptions).toPromise();
-
+    return this.http.post(environment.apiServer + 'contributions', { title, url, text }, this.getHeaders()).toPromise();
   }
 
   getComments(contribution_id) {
-    return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments',  httpOptions).toPromise();
-
+    console.log(contribution_id);
+    return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments', this.getHeaders()).toPromise();
   }
 
-  postComment(contribution_id, body) {
-    return this.http.post(environment.apiServer + 'contributions/' + contribution_id + '/comments',  {body}, httpOptions).toPromise();
-
+  login(provider, uid, nickname, token, secret) {
+    var body = { provider: provider, uid: uid, nickname: nickname, token: token, secret: secret };
+    return this.http.post(environment.apiServer + 'login', body, this.getHeaders()).toPromise();
   }
 
-  getUser(user_id){
-    return this.http.get(environment.apiServer + 'users/' + user_id ,httpOptions).toPromise();
+  getUser(user_id) {
+    return this.http.get(environment.apiServer + 'users/' + user_id, this.getHeaders()).toPromise();
   }
 
 
