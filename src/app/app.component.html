@@ -12,7 +12,7 @@
         <li class="nav-item">
           <a routerLink="/new" class="nav-link" routerLinkActive="active">New</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLoggedIn()">
           <a routerLink="/threads" class="nav-link" routerLinkActive="active">Threads</a>
         </li>
         <li class="nav-item">

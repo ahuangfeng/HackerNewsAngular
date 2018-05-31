@@ -40,6 +40,9 @@ export class HttpService {
 
   }
 
+  getUser(user_id){
+    return this.http.get(environment.apiServer + 'users/' + user_id ,httpOptions).toPromise();
+  }
 
 
 }
