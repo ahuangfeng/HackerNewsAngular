@@ -14,6 +14,7 @@ export class FullContributionComponent implements OnInit {
   body;
   errorMessage;
 
+  //TODO: no compila amb l'html i s'hauria de fer amb reactive forms
   constructor(private httpService: HttpService, private router: Router) { }
 
   ngOnInit() {
