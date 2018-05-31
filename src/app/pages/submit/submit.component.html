@@ -1,20 +1,31 @@
 <div>
-  <h1>
-    New contribution!
-  </h1>
-  <p id="p" class="Warning">
+  <h3 style="margin-top: 20px;">
+    Create a new Contribution
+  </h3>
+  <p class="warning">
     {{errorMessage}}
   </p>
 
-  <!-- <form [formGroup]="submitForm">
+  <form [formGroup]="submitForm">
     <div class="form-group">
-      <label class="center-block">Name:
+      <label for="title" class="center-block">Title:
         <input class="form-control" formControlName="title">
       </label>
     </div>
-  </form> -->
-  <label for="title">title </label>
-  <input id="title" class="widthInput" (ngModel)="title" (input)="changeTitle($event)">
+    <div class="form-group">
+      <label class="center-block">Url:
+        <input class="form-control" formControlName="url">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Ask:
+        <textarea class="form-control" formControlName="ask"></textarea>
+      </label>
+    </div>
+    <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="createContribution()">submit</button>
+  </form>
+  
+  <!-- <input id="title" class="widthInput" (ngModel)="title" (input)="changeTitle($event)">
   <br>
   <label for="url">url </label>
   <input id="url" class="widthInput2" (ngModel)="url" (input)="changeUrl($event)">
@@ -22,8 +33,7 @@
   <p class="or">or</p>
   <label for="ask" class="ask">ask</label>
   <textarea class="text" id="ask" rows="4" cols="70" (ngModel)="ask" (input)="changeAsk($event)"></textarea>
-  <br>
-  <button class="button" (click)="createContribution()">submit</button>
+  <br> -->
 
   <p class="info">Leave url blank to submit a question for discussion. If there is no url, the text (if any) will appear at the top of the
     thread.</p>

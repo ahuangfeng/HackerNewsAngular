@@ -44,7 +44,13 @@ export class HttpService {
   }
 
   postNewContributions(title, url, text) {
-    return this.http.post(environment.apiServer + 'contributions', { title, url, text }, this.getHeaders()).toPromise();
+    var body = {title: title};
+    if(url == undefined){
+      body['text'] = text;
+    }else{
+      body['url'] = url;
+    }
+    return this.http.post(environment.apiServer + 'contributions', body, this.getHeaders()).toPromise();
   }
 
   getComments(contribution_id) {

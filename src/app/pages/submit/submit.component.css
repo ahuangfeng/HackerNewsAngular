@@ -2,11 +2,11 @@
   margin-left: 3%;
 }
 
-.widthInput {
+/* .widthInput {
   width: 60%;
   margin-left: 1%;
 
-}
+} */
 
 .widthInput2 {
   width: 60%;
@@ -35,7 +35,6 @@
   margin-top: 3%;
 }
 
-.Warning {
-  visibility: hidden;
-  color: red;
+.warning {
+  color: #ff4e4e;
 }

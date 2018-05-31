@@ -14,6 +14,18 @@ export class FullContributionComponent implements OnInit {
   body;
   errorMessage;
 
+  constructor(private httpService: HttpService, private router: Router) { }
+
+  ngOnInit() {
+    this.httpService.getComments("4").then(data => {
+      console.log("data", data['comments']);
+      this.comments = data['comments'];
+
+    }).catch(err => {
+      console.log("error:", err);
+    })
+  }
+
   changeBody(newValue) {
     this.body = newValue;
   }
@@ -40,16 +52,5 @@ export class FullContributionComponent implements OnInit {
 
   }
 
-  constructor(private httpService: HttpService, private router: Router) { }
-
-  ngOnInit() {
-    this.httpService.getComments("4").then(data => {
-      console.log("data", data['comments']);
-      this.comments = data['comments'];
-
-    }).catch(err => {
-      console.log("error:", err);
-    })
-  }
 
 }
