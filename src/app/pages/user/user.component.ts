@@ -11,16 +11,23 @@ import { User } from '../../model/user';
 })
 export class UserComponent implements OnInit {
 
-  @Input() user: User;
+  @Input() user: any;
+  userRender:User;
+
   constructor(private httpService: HttpService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.httpService.getUser(this.getUserId()).then(data => {
-      console.log("data", data);
-      this.user = data['user'];
-    }).catch(err => {
-      console.log("error:", err);
-    })
+    if(this.user != undefined){
+      // ja tindra un user ben format
+      this.userRender = new User(this.user);
+    }else{
+      this.httpService.getUser(this.getUserId()).then(data => {
+        console.log("data", data);
+        this.userRender = data['user'];
+      }).catch(err => {
+        console.log("error:", err);
+      });
+    }
   }
 
   getUserId(): string{
