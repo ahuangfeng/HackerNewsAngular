@@ -13,7 +13,6 @@ export class HttpService {
 
   private getHeaders() {
     var token = credentials.getToken();
-    console.log("Token:", token);
     var httpOptions;
     if (token) {
       httpOptions = {
@@ -49,7 +48,7 @@ export class HttpService {
   }
 
   getComments(contribution_id) {
-    console.log(contribution_id);
+    // console.log(contribution_id);
     return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments', this.getHeaders()).toPromise();
   }
 

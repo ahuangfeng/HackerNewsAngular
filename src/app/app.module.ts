@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Libraries
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -57,6 +58,7 @@ export function tokenGetter() {
       }
     }),
     BrowserModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'hnangular'),
     AngularFireAuthModule
   ],
