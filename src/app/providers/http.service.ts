@@ -11,14 +11,24 @@ export class HttpService {
 
   constructor(public http: HttpClient) { }
 
-  private getHeaders(){
+  private getHeaders() {
     var token = credentials.getToken();
-    var httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'e6d4c8c9cb766bce8b273174ab379195'
-      })
-    };
+    console.log("Token:", token);
+    var httpOptions;
+    if (token) {
+      httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': credentials.getToken()
+        })
+      };
+    } else {
+      httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }
+    }
     return httpOptions;
   }
 
@@ -51,6 +61,5 @@ export class HttpService {
   getUser(user_id) {
     return this.http.get(environment.apiServer + 'users/' + user_id, this.getHeaders()).toPromise();
   }
-
 
 }
