@@ -1,0 +1,12 @@
+.tag{
+    padding: 10px 0 10px 20px;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.elem{
+    padding: 10px 0 10px 5px;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

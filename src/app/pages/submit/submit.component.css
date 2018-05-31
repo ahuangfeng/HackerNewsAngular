@@ -1,0 +1,41 @@
+.button {
+  margin-left: 3%;
+}
+
+.widthInput {
+  width: 60%;
+  margin-left: 1%;
+
+}
+
+.widthInput2 {
+  width: 60%;
+  margin-left: 1.5%;
+}
+
+.info {
+  color: grey;
+  margin-left: 3%;
+  margin-top: 3%;
+
+}
+
+.text {
+  margin-left: 3%;
+}
+
+.or {
+  color: grey;
+  margin-left: 3%;
+}
+
+.ask {
+  display: inline-block;
+  position: absolute;
+  margin-top: 3%;
+}
+
+.Warning {
+  visibility: hidden;
+  color: red;
+}

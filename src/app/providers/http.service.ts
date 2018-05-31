@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { map, filter, catchError, mergeMap } from 'rxjs/operators';
-// import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -26,5 +24,25 @@ export class HttpService {
   getNewContributions(){
     return this.http.get(environment.apiServer + 'contributions?type=new',httpOptions).toPromise();
   }
+
+  getAskContributions() {
+    return this.http.get(environment.apiServer + 'contributions?type=ask',httpOptions).toPromise();
+  }
+
+  postNewContributions(title, url, text) {
+    return this.http.post(environment.apiServer + 'contributions',{title, url, text}, httpOptions).toPromise();
+
+  }
+
+  getComments(contribution_id) {
+    console.log(contribution_id);
+    return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments',  httpOptions).toPromise();
+
+  }
+
+  getUser(user_id){
+    return this.http.get(environment.apiServer + 'users/' + user_id ,httpOptions).toPromise();
+  }
+
 
 }
