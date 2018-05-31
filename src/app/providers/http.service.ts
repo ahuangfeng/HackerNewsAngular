@@ -48,8 +48,12 @@ export class HttpService {
   }
 
   getComments(contribution_id) {
-    // console.log(contribution_id);
     return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments', this.getHeaders()).toPromise();
+  }
+
+  postComment(contribution_id, body) {
+    return this.http.post(environment.apiServer + 'contributions/' + contribution_id + '/comments', {body}, this.getHeaders()).toPromise();
+
   }
 
   login(provider, uid, nickname, token, secret) {
