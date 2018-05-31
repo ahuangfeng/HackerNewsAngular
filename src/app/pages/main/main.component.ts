@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../providers/http.service';
 
 
-
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -22,7 +21,7 @@ export class MainComponent implements OnInit {
       this.contributions = data['contributions'];
     }).catch(err => {
       console.log("error:", err);
-    })
+    });
   }
 
 }

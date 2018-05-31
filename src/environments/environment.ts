@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiServer: 'http://localhost:3000/api/v1/',
+  apiServer: 'https://g11d-hackernews.herokuapp.com/api/v1/',
   firebase: {
     apiKey: "AIzaSyBNzqtFRbiFKQMkO7kwXnAwB6RbQlI4Rlw",
     authDomain: "hnangular.firebaseapp.com",
