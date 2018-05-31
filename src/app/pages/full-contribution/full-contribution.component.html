@@ -1,10 +1,13 @@
 <div>
+  <p id = "p" class="Warning">
+    {{errorMessage}}
+  </p>
   <Label for="title">Title:</Label>
   <strong id ="title">title</strong><br>
   <Label for="ask">Text:</Label>
   <strong id ="ask">text</strong><br>
-  <textarea placeholder="The quick brown fox..." rows="10"></textarea><br>
-  <button class="distance">add comment</button>
+  <textarea placeholder="The quick brown fox..." rows="10" (ngModel)="body" (input)="changeBody($event)"></textarea><br>
+  <button class="distance" (click)="createComment()">add comment</button>
   <h4 class="distance">Comments</h4>
     <div class="post" *ngFor="let comment of comments">
       <app-single-comment [comment]="comment"></app-single-comment>

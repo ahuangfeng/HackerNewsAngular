@@ -6,4 +6,9 @@
   padding: 10px 0 10px 5px;
 }
 
+.Warning {
+  visibility: hidden;
+  color: red;
+}
+
 
