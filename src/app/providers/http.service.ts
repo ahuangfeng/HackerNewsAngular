@@ -59,7 +59,6 @@ export class HttpService {
 
   postComment(contribution_id, comment) {
     return this.http.post(environment.apiServer + 'contributions/' + contribution_id + '/comments', {body: comment}, this.getHeaders()).toPromise();
-
   }
 
   login(provider, uid, nickname, token, secret) {

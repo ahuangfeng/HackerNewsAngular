@@ -8,6 +8,7 @@ import { HttpService } from './http.service';
 export class UserService {
 
   userShow: User;
+  
   constructor(private httpService: HttpService) { }
 
   getUser(id){
