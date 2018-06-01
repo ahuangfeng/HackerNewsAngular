@@ -37,7 +37,6 @@ export class AppComponent {
   }
 
   me(){
-    // TODO: si hi ha un /user/1, i faig el meu user no funciona
     this.userService.getUser(this.authService.currentUserID);
     this.router.navigateByUrl('/user/'+this.authService.currentUserID);
   }

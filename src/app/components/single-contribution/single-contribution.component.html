@@ -1,43 +1,48 @@
 <div class="item-block">
-  <div style="margin-bottom: 0px;">
-    <div *ngIf="contributionShow.hasUrl(); else text">
-      <a class="title" href="{{contributionShow.url}}">
-        {{contributionShow.title}}
-      </a>
-      <span class="domain">({{contributionShow.domain()}})</span>
-    </div>
-    <ng-template #text>
-      <a class="title" routerLink="/contribution" routerLinkActive="active">
-        {{contributionShow.title}}
-      </a>
-    </ng-template>
-
-    <div class="subtext-palm">
-        <div class="details">
-          <span class="name"><a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a></span>
-          <span class="right">{{contributionShow.points}} ★</span>
-        </div>
-        <div class="details">
-        {{ contributionShow.created_at }}
-        <a routerLink="contribution" routerLinkActive="active" class="comment-number" > •
-          {{contributionShow.numComments }} comments
+  <div style="float: left;">
+    <button>Vote</button>
+  </div>
+  <div>
+    <div style="margin-bottom: 0px;">
+      <div *ngIf="contributionShow.hasUrl()">
+        <a class="title" href="{{contributionShow.url}}">
+          {{contributionShow.title}}
         </a>
-        </div>
-    </div>
-
-    <div class="subtext-laptop">
-      <span>
-        {{contributionShow.points}} points by
-        <a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a>
-      </span>
-      <span class="item-details">
-        {{contributionShow.created_at}}
-        <span> |
-          <a routerLink="/contribution" routerLinkActive="active">
-            {{contributionShow.numComments}} comments
+        <span class="domain">({{contributionShow.domain()}})</span>
+      </div>
+      <div *ngIf="!contributionShow.hasUrl()">
+        <a class="title" routerLink="/contribution" routerLinkActive="active">
+          {{contributionShow.title}}
+        </a>
+      </div>
+  
+      <div class="subtext-palm">
+          <div class="details">
+            <span class="name"><a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a></span>
+            <span class="right">{{contributionShow.points}} ★</span>
+          </div>
+          <div class="details">
+          {{ contributionShow.created_at }}
+          <a routerLink="contribution" routerLinkActive="active" class="comment-number" > •
+            {{contributionShow.numComments }} comments
           </a>
+          </div>
+      </div>
+  
+      <div class="subtext-laptop">
+        <span>
+          {{contributionShow.points}} points by
+          <a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a>
         </span>
-      </span>
+        <span class="item-details">
+          {{contributionShow.created_at}}
+          <span> |
+            <a routerLink="/contribution" routerLinkActive="active">
+              {{contributionShow.numComments}} comments
+            </a>
+          </span>
+        </span>
+      </div>
     </div>
   </div>
 </div>
