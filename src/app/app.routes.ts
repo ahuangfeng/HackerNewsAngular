@@ -14,7 +14,7 @@ export const appRoutes: Routes = [
     pathMatch: 'full'
   },
   { path: 'main', component: MainComponent },
-  { path: 'contribution', component: FullContributionComponent },
+  { path: 'contribution/:id', component: FullContributionComponent },
   { path: 'new', component: NewContributionsComponent },
   { path: 'threads', component: ThreadsComponent },
   { path: 'ask', component: AskComponent },

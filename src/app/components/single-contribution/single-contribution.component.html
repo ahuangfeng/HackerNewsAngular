@@ -18,7 +18,7 @@
         <span class="domain">({{contributionShow.domain()}})</span>
       </div>
       <div *ngIf="!contributionShow.hasUrl()">
-        <a class="title" routerLink="/contribution" routerLinkActive="active">
+        <a class="title" [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active">
           {{contributionShow.title}}
         </a>
       </div>
@@ -32,7 +32,7 @@
         </div>
         <div class="details">
           {{ contributionShow.created_at }}
-          <a routerLink="contribution" routerLinkActive="active" class="comment-number"> • {{contributionShow.numComments }} comments
+          <a [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active" class="comment-number"> • {{contributionShow.numComments }} comments
           </a>
         </div>
       </div>
@@ -45,7 +45,7 @@
         <span class="item-details">
           {{contributionShow.created_at}}
           <span> |
-            <a routerLink="/contribution" routerLinkActive="active">
+            <a [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active">
               {{contributionShow.numComments}} comments
             </a>
           </span>

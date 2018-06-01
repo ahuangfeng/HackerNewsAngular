@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../providers/http.service";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
@@ -20,7 +20,7 @@ export class FullContributionComponent implements OnInit {
 
   currentID = 4;
   
-  constructor(private httpService: HttpService, private router: Router) {
+  constructor(private route: ActivatedRoute,private httpService: HttpService, private router: Router) {
     this.getComments(this.currentID);
   }
 
@@ -52,5 +52,8 @@ export class FullContributionComponent implements OnInit {
     }
   }
 
+  getUserId(): string {
+    return this.route.snapshot.paramMap.get('id');
+  }
 
 }
