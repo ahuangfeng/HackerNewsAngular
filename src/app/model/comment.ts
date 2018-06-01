@@ -7,7 +7,7 @@ export class Comment {
   parent_id: number;
   points: number;
   username: string;
-  hasVoter: boolean;
+  hasVoted: boolean;
   user_id:string;
 
   constructor(init?: {
