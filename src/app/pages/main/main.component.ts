@@ -19,6 +19,9 @@ export class MainComponent implements OnInit {
     this.httpService.getContributions().then(data => {
       console.log("data", data);
       this.contributions = data['contributions'];
+      this.contributions.sort(function(a,b){
+        return b.points - a.points;
+      });
     }).catch(err => {
       console.log("error:", err);
     });

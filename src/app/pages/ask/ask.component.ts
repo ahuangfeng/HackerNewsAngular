@@ -17,9 +17,12 @@ export class AskComponent implements OnInit {
     this.httpService.getAskContributions().then(data => {
       console.log("data", data);
       this.contributions = data['contributions'];
+      this.contributions.sort(function(a,b){
+        return b.points - a.points;
+      });
     }).catch(err => {
       console.log("error:", err);
-    })
+    });
   }
 
 }
