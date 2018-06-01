@@ -78,4 +78,17 @@ export class HttpService {
     return this.http.get(environment.apiServer + 'users/' + user_id +'/comments', this.getHeaders()).toPromise();
   }
 
+  voteContribution(id){
+    console.log("HTTP:", this.getHeaders());
+    return this.http.post(environment.apiServer + 'contributions/'+id+'/vote',{}, this.getHeaders()).toPromise();
+  }
+
+  unvoteContribution(id){
+    return this.http.post(environment.apiServer + 'contributions/'+id+'/unvote',{}, this.getHeaders()).toPromise();
+  }
+
+  getContributionById(id){
+    return this.http.get(environment.apiServer + 'contributions/'+id, this.getHeaders()).toPromise();
+  }
+
 }

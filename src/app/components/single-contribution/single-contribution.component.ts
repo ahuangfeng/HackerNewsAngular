@@ -2,6 +2,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Contribution } from '../../model/contribution';
 import { AuthService } from '../../providers/auth.service';
+import { HttpService } from '../../providers/http.service';
 
 @Component({
   selector: 'single-contribution',
@@ -14,30 +15,44 @@ export class SingleContributionComponent implements OnInit {
 
   contributionShow: Contribution;
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService: AuthService, private httpService: HttpService) { }
 
   ngOnInit() {
     this.contributionShow = new Contribution(this.contribution);
   }
 
-  ownContribution(){
+  ownContribution() {
     return this.authService.currentUserID == this.contributionShow.user_id;
   }
 
-  delete(){
+  delete() {
     console.log("TODO: delete");
   }
 
-  edit(){
+  edit() {
     console.log("TODO: Edit;");
   }
 
-  vote(){
-    console.log("TODO: Vote contribution:", this.contributionShow.id);
+  update() {
+    this.httpService.getContributionById(this.contribution.id).then(data => {
+      this.contributionShow = new Contribution(data['contribution']);
+    }).catch(this.handleError);
   }
 
-  unvote(){
-    console.log("TODO: UnVote contribution:", this.contributionShow.id);
+  vote() {
+    this.httpService.voteContribution(this.contributionShow.id).then(data => {
+      this.update();
+    }).catch(this.handleError);
+  }
+
+  unvote() {
+    this.httpService.unvoteContribution(this.contributionShow.id).then(data => {
+      this.update();
+    }).catch(this.handleError);
+  }
+
+  handleError(err){
+    console.error("Error:", err);
   }
 
 }
