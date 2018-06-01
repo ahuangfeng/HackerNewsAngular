@@ -1,5 +1,5 @@
 <div>
-  <p id = "p" class="Warning">
+  <p id = "p" class="warning">
     {{errorMessage}}
   </p>
   <Label for="title">Title:</Label>
@@ -7,7 +7,18 @@
   <Label for="ask">Text:</Label>
   <strong id ="ask">text</strong><br>
   <!-- <textarea placeholder="The quick brown fox..." rows="10" [(ngModel)]="body" (input)="changeBody($event)"></textarea><br> -->
-  <button class="distance" (click)="createComment()">add comment</button>
+  <!-- <button class="distance" (click)="createComment()">add comment</button> -->
+
+  <form [formGroup]="commentForm">
+    <div class="form-group">
+      <label for="comment" class="center-block">Comment:
+        <textarea class="form-control" formControlName="body"></textarea>
+      </label>
+    </div>
+    <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="createComment()">submit</button>
+  </form>
+
+
   <h4 class="distance">Comments</h4>
     <div class="post" *ngFor="let comment of comments">
       <app-single-comment [comment]="comment"></app-single-comment>

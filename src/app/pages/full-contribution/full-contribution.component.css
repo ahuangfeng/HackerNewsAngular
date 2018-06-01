@@ -6,9 +6,9 @@
   padding: 10px 0 10px 5px;
 }
 
-.Warning {
-  visibility: hidden;
-  color: red;
+.warning {
+  /* visibility: hidden; */
+  color: #ff4e4e;
 }
 
 

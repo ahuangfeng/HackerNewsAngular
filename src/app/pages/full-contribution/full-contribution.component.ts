@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpService} from "../../providers/http.service";
+import { HttpService } from "../../providers/http.service";
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,46 +12,44 @@ import { Router } from '@angular/router';
 export class FullContributionComponent implements OnInit {
 
   comments;
-  body;
   errorMessage;
 
-  //TODO: no compila amb l'html i s'hauria de fer amb reactive forms
-  constructor(private httpService: HttpService, private router: Router) { }
+  commentForm = new FormGroup({
+    body: new FormControl('', Validators.required),
+  });
 
-  ngOnInit() {
-    this.httpService.getComments("4").then(data => {
-      console.log("data", data['comments']);
-      this.comments = data['comments'];
-
-    }).catch(err => {
-      console.log("error:", err);
-    })
+  currentID = 4;
+  
+  constructor(private httpService: HttpService, private router: Router) {
+    this.getComments(this.currentID);
   }
 
-  changeBody(newValue) {
-    this.body = newValue;
+  ngOnInit() {
+  }
+
+  getComments(id) {
+    this.httpService.getComments(id).then(data => {
+      console.log("data", data['comments']);
+      this.comments = data['comments'];
+    }).catch(err => {
+      console.log("error:", err);
+      this.errorMessage = err.error.message;
+    });
   }
 
   createComment() {
-
-    let body;
-    if (this.body === undefined) {
-      body = undefined;
+    console.log("Creating comment:", this.commentForm.value);
+    if (this.commentForm.valid) {
+      this.httpService.postComment(this.currentID, this.commentForm.value.body).then(data => {
+        this.commentForm.patchValue({ body: "" });
+        this.errorMessage = undefined;
+        this.getComments(this.currentID);
+      }).catch(err => {
+        this.errorMessage = err.error.message;
+      });
+    } else {
+      this.errorMessage = "The comment should not be empty.";
     }
-    else {
-      body = this.body.target.value;
-    }
-
-    this.httpService.postComment("4", body).then(data => {
-      console.log(data)
-      location.reload();
-
-    }).catch(err => {
-      this.errorMessage = err.error.message;
-      document.getElementById("p").style.visibility = "visible";
-    })
-
-
   }
 
 

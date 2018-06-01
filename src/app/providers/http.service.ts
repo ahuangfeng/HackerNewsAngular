@@ -57,8 +57,8 @@ export class HttpService {
     return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments', this.getHeaders()).toPromise();
   }
 
-  postComment(contribution_id, body) {
-    return this.http.post(environment.apiServer + 'contributions/' + contribution_id + '/comments', {body}, this.getHeaders()).toPromise();
+  postComment(contribution_id, comment) {
+    return this.http.post(environment.apiServer + 'contributions/' + contribution_id + '/comments', {body: comment}, this.getHeaders()).toPromise();
 
   }
 
