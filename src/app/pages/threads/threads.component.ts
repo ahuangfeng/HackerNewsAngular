@@ -15,7 +15,7 @@ export class ThreadsComponent implements OnInit {
   ngOnInit() {
     this.httpService.getThreads(this.authService.currentUserID).then(data => {
       console.log("data", data);
-      this.comments = data['users'];
+      this.comments = data['comments'];
     }).catch(err => {
       console.log("error:", err);
     });
