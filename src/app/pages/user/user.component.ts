@@ -12,26 +12,20 @@ import { AuthService } from '../../providers/auth.service';
 })
 export class UserComponent implements OnInit {
 
-  @Input() user: any;
-  userRender:User;
+  userRender: User;
 
-  constructor(private httpService: HttpService, private route: ActivatedRoute, public authService:AuthService) { }
+  constructor(private httpService: HttpService, private route: ActivatedRoute, public authService: AuthService) { }
 
   ngOnInit() {
-    if(this.user != undefined){
-      // ja tindra un user ben format
-      this.userRender = new User(this.user);
-    }else{
-      this.httpService.getUser(this.getUserId()).then(data => {
-        console.log("data", data);
-        this.userRender = data['user'];
-      }).catch(err => {
-        console.log("error:", err);
-      });
-    }
+    this.httpService.getUser(this.getUserId()).then(data => {
+      console.log("data", data);
+      this.userRender = data['user'];
+    }).catch(err => {
+      console.log("error:", err);
+    });
   }
 
-  getUserId(): string{
+  getUserId(): string {
     return this.route.snapshot.paramMap.get('id');
   }
 }
