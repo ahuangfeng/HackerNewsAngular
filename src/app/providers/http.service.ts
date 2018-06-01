@@ -101,5 +101,9 @@ export class HttpService {
   getCommentById(contribution_id,commentId){
     return this.http.get(environment.apiServer + 'contributions/'+contribution_id+'/comments/'+commentId, this.getHeaders()).toPromise();
   }
+  
+  deleteComment(contribution_id,commentId){
+    return this.http.delete(environment.apiServer + 'contributions/'+contribution_id+'/comments/'+commentId, this.getHeaders()).toPromise();
+  }
 
 }

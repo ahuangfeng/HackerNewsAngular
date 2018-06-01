@@ -8,6 +8,7 @@ export class Comment {
   points: number;
   username: string;
   hasVoter: boolean;
+  user_id:string;
 
   constructor(init?: {
     body: string,
@@ -17,7 +18,8 @@ export class Comment {
     parent_id: number,
     points: number,
     username: string,
-    hasVoted: boolean
+    hasVoted: boolean,
+    user_id:string;
   }) {
     if (init) Object.assign(this, init);
   }

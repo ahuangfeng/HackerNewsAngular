@@ -1,4 +1,4 @@
-<div style="padding-left: 10px;">
+<div *ngIf="!deleted" style="padding-left: 10px;">
   <div *ngIf="!commentShow.hasVoted" style="float: left; padding-right: 14px;">
     <button (click)="vote()" type="button" class="btn btn-default btn-sm">
       <i class="fas fa-angle-up"></i>
@@ -17,10 +17,12 @@
       </span> |
       <span class="color">
         {{commentShow.created_at}}
-      </span> 
-      <!-- <span class="color">
-        {{commentShow.created_at}}
-      </span> -->
+      </span>
+      <span *ngIf="ownComment()" class="color">
+        |
+        <a (click)="edit()" routerLinkActive="active">edit</a> |
+        <a (click)="delete()" routerLinkActive="active">delete</a>
+      </span>
       <p class="commentBody">
         {{commentShow.body}}
       </p>
