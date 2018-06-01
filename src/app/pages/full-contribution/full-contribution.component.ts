@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../providers/http.service";
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Contribution } from '../../model/contribution';
 
 
 @Component({
@@ -11,20 +12,35 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class FullContributionComponent implements OnInit {
 
-  comments;
+  comments = [];
   errorMessage;
+  contribution: Contribution;
 
   commentForm = new FormGroup({
     body: new FormControl('', Validators.required),
   });
 
-  currentID = 4;
+  currentID;
   
   constructor(private route: ActivatedRoute,private httpService: HttpService, private router: Router) {
-    this.getComments(this.currentID);
+    this.currentID = this.getContributionId();
+    this.getContribution(this.currentID);
   }
 
   ngOnInit() {
+  }
+
+  getContribution(id){
+    this.httpService.getContribution(id).then(data => {
+      console.log("DATA:", data);
+      this.contribution = new Contribution(data['contribution']);
+      return this.httpService.getComments(id);
+    }).then(comments => {
+      console.log("comments:", comments);
+      this.comments = comments['comments'];
+    }).catch(err => {
+      this.errorMessage = err.error.message;
+    });
   }
 
   getComments(id) {
@@ -52,7 +68,7 @@ export class FullContributionComponent implements OnInit {
     }
   }
 
-  getUserId(): string {
+  getContributionId(): string {
     return this.route.snapshot.paramMap.get('id');
   }
 

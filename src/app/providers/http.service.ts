@@ -66,6 +66,10 @@ export class HttpService {
     return this.http.post(environment.apiServer + 'login', body, this.getHeaders()).toPromise();
   }
 
+  getContribution(id){
+    return this.http.get(environment.apiServer + 'contributions/' + id, this.getHeaders()).toPromise();
+  }
+
   getUser(user_id) {
     return this.http.get(environment.apiServer + 'users/' + user_id, this.getHeaders()).toPromise();
   }

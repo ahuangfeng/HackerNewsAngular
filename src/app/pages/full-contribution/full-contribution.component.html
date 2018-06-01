@@ -1,14 +1,20 @@
 <div>
-  <p id = "p" class="warning">
+  <p id="p" class="warning">
     {{errorMessage}}
   </p>
-  <Label for="title">Title:</Label>
-  <strong id ="title">title</strong><br>
-  <Label for="ask">Text:</Label>
-  <strong id ="ask">text</strong><br>
-  <!-- <textarea placeholder="The quick brown fox..." rows="10" [(ngModel)]="body" (input)="changeBody($event)"></textarea><br> -->
-  <!-- <button class="distance" (click)="createComment()">add comment</button> -->
-
+  <label for="title">Title: </label>
+  <strong id="title"> {{contribution?.title}}</strong>
+  <br>
+  <div *ngIf="contribution?.hasUrl()">
+    <label for="url" >Url: </label>
+    <a href="{{contribution?.url}}"> {{contribution?.url}}</a>
+    <br>
+  </div>
+  <div *ngIf="!contribution?.hasUrl()">
+    <label for="ask" >Text: </label>
+    <strong id="ask"> {{contribution?.text}}</strong>
+    <br>
+  </div>
   <form [formGroup]="commentForm">
     <div class="form-group">
       <label for="comment" class="center-block">Comment:
@@ -18,10 +24,13 @@
     <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="createComment()">submit</button>
   </form>
 
-
-  <h4 class="distance">Comments</h4>
+  <div style="margin-top: 30px;" *ngIf="comments.length == 0">
+    <p>There are not comments. Comment first!</p>
+  </div>
+  <div *ngIf="comments.length > 0">
+    <h4 class="distance">Comments</h4>
     <div class="post" *ngFor="let comment of comments">
       <app-single-comment [comment]="comment"></app-single-comment>
     </div>
+  </div>
 </div>
-
