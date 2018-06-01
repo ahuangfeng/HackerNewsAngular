@@ -1,7 +1,14 @@
+<div *ngIf="true" style="float: left; padding-right: 14px;">
+  <button type="button" class="btn btn-default btn-sm">
+    <i class="fas fa-angle-up"></i>
+  </button>
+</div>
+<div *ngIf="false" style="float: left; padding-right: 14px;">
+  <button type="button" class="btn btn-default btn-sm">
+    <i class="fas fa-angle-down"></i>
+  </button>
+</div>
 <div class="item-block">
-  <div style="float: left;">
-    <button>Vote</button>
-  </div>
   <div>
     <div style="margin-bottom: 0px;">
       <div *ngIf="contributionShow.hasUrl()">
@@ -15,20 +22,21 @@
           {{contributionShow.title}}
         </a>
       </div>
-  
+
       <div class="subtext-palm">
-          <div class="details">
-            <span class="name"><a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a></span>
-            <span class="right">{{contributionShow.points}} ★</span>
-          </div>
-          <div class="details">
+        <div class="details">
+          <span class="name">
+            <a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a>
+          </span>
+          <span class="right">{{contributionShow.points}} ★</span>
+        </div>
+        <div class="details">
           {{ contributionShow.created_at }}
-          <a routerLink="contribution" routerLinkActive="active" class="comment-number" > •
-            {{contributionShow.numComments }} comments
+          <a routerLink="contribution" routerLinkActive="active" class="comment-number"> • {{contributionShow.numComments }} comments
           </a>
-          </div>
+        </div>
       </div>
-  
+
       <div class="subtext-laptop">
         <span>
           {{contributionShow.points}} points by
@@ -39,6 +47,16 @@
           <span> |
             <a routerLink="/contribution" routerLinkActive="active">
               {{contributionShow.numComments}} comments
+            </a>
+          </span>
+          <span *ngIf="ownContribution()"> |
+            <a (click)="edit()">
+              edit
+            </a>
+          </span>
+          <span *ngIf="ownContribution()"> |
+            <a (click)="delete()">
+              delete
             </a>
           </span>
         </span>
