@@ -26,4 +26,12 @@ export class SingleCommentComponent implements OnInit {
     this.router.navigateByUrl('/user/'+this.authService.currentUserID);
   }
 
+  vote(){
+    console.log("TODO: vote:", this.comment.id);
+  }
+
+  unvote(){
+    console.log("TODO: unvote:", this.comment.id);
+  }
+
 }

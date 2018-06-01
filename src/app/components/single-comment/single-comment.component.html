@@ -1,15 +1,29 @@
-<div>
-  <div class="subtext-laptop">
+<div style="padding-left: 10px;">
+  <div *ngIf="true" style="float: left; padding-right: 14px;">
+    <button (click)="vote()" type="button" class="btn btn-default btn-sm">
+      <i class="fas fa-angle-up"></i>
+    </button>
+  </div>
+  <div *ngIf="false" style="float: left; padding-right: 14px;">
+    <button (click)="vote()" type="button" class="btn btn-default btn-sm">
+      <i class="fas fa-angle-down"></i>
+    </button>
+  </div>
+  <div class="item-block">
+    <div class="subtext-laptop">
       <span class="color">
         {{commentShow.points}} points by
         <a (click)="me()" routerLinkActive="active">@{{commentShow.username}}</a>
-      </span>
+      </span> |
       <span class="color">
         {{commentShow.created_at}}
-      </span>
-    <p class = "commentBody">
-      {{commentShow.body}}
-    </p>
+      </span> 
+      <!-- <span class="color">
+        {{commentShow.created_at}}
+      </span> -->
+      <p class="commentBody">
+        {{commentShow.body}}
+      </p>
+    </div>
   </div>
 </div>
-

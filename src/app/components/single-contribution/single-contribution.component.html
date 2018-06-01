@@ -1,10 +1,10 @@
 <div *ngIf="true" style="float: left; padding-right: 14px;">
-  <button type="button" class="btn btn-default btn-sm">
+  <button (click)="vote()" type="button" class="btn btn-default btn-sm">
     <i class="fas fa-angle-up"></i>
   </button>
 </div>
 <div *ngIf="false" style="float: left; padding-right: 14px;">
-  <button type="button" class="btn btn-default btn-sm">
+  <button (click)="unvote()" type="button" class="btn btn-default btn-sm">
     <i class="fas fa-angle-down"></i>
   </button>
 </div>
