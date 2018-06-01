@@ -9,6 +9,7 @@ export class Contribution {
   url: string;
   user_id: string;
   username: string;
+  hasVoted: boolean;
 
   constructor(
     init?: {
@@ -20,7 +21,8 @@ export class Contribution {
       title: string,
       url: string,
       user_id: string,
-      username: string
+      username: string,
+      hasVoted: boolean
     }
   ) {
     if (init) Object.assign(this, init);
