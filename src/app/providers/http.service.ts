@@ -79,7 +79,6 @@ export class HttpService {
   }
 
   voteContribution(id){
-    console.log("HTTP:", this.getHeaders());
     return this.http.post(environment.apiServer + 'contributions/'+id+'/vote',{}, this.getHeaders()).toPromise();
   }
 
@@ -87,8 +86,20 @@ export class HttpService {
     return this.http.post(environment.apiServer + 'contributions/'+id+'/unvote',{}, this.getHeaders()).toPromise();
   }
 
+  voteComment(contributionId,commentId){
+    return this.http.post(environment.apiServer + 'contributions/'+contributionId+'/comments/'+commentId+'/vote',{}, this.getHeaders()).toPromise();
+  }
+
+  unvoteComment(contributionId,commentId){
+    return this.http.post(environment.apiServer + 'contributions/'+contributionId+'/comments/'+commentId+'/unvote',{}, this.getHeaders()).toPromise();
+  }
+
   getContributionById(id){
     return this.http.get(environment.apiServer + 'contributions/'+id, this.getHeaders()).toPromise();
+  }
+
+  getCommentById(contribution_id,commentId){
+    return this.http.get(environment.apiServer + 'contributions/'+contribution_id+'/comments/'+commentId, this.getHeaders()).toPromise();
   }
 
 }
