@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from 'src/app/providers/http.service';
 import { User } from '../../model/user';
 import { AuthService } from '../../providers/auth.service';
+import { UserService } from '../../providers/user.service';
 
 @Component({
   selector: 'app-user',
@@ -12,17 +13,10 @@ import { AuthService } from '../../providers/auth.service';
 })
 export class UserComponent implements OnInit {
 
-  userRender: User;
-
-  constructor(private httpService: HttpService, private route: ActivatedRoute, public authService: AuthService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, public authService: AuthService) { }
 
   ngOnInit() {
-    this.httpService.getUser(this.getUserId()).then(data => {
-      console.log("data", data);
-      this.userRender = data['user'];
-    }).catch(err => {
-      console.log("error:", err);
-    });
+    this.userService.getUser(this.getUserId());
   }
 
   getUserId(): string {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './providers/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from './providers/user.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(public authService: AuthService, private router: Router){
+  constructor(public authService: AuthService, private router: Router, public userService:UserService){
 
   }
 
@@ -37,6 +38,7 @@ export class AppComponent {
 
   me(){
     // TODO: si hi ha un /user/1, i faig el meu user no funciona
+    this.userService.getUser(this.authService.currentUserID);
     this.router.navigateByUrl('/user/'+this.authService.currentUserID);
   }
 
