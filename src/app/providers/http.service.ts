@@ -71,4 +71,8 @@ export class HttpService {
     return this.http.get(environment.apiServer + 'users/' + user_id, this.getHeaders()).toPromise();
   }
 
+  getThreads(user_id) {
+    return this.http.get(environment.apiServer + 'users/' + user_id +'/comments', this.getHeaders()).toPromise();
+  }
+
 }

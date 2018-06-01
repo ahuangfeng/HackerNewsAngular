@@ -2,7 +2,7 @@
   <div class="subtext-laptop">
       <span class="color">
         {{commentShow.points}} points by
-        <a routerLink="/user" routerLinkActive="active">@{{commentShow.username}}</a>
+        <a (click)="me()" routerLinkActive="active">@{{commentShow.username}}</a>
       </span>
       <span class="color">
         {{commentShow.created_at}}

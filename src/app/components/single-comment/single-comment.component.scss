@@ -1,0 +1,32 @@
+.commentBody {
+  margin-top: 1%;
+}
+
+.color {
+  color: grey;
+}
+
+.subtext-laptop {
+  margin-left: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  a {
+      color: #b92b27;
+      cursor: pointer;
+      text-decoration: none;
+  } // a:visited {
+  //     color: #696969;
+  // }
+  .details {
+      margin-top: 5px;
+      .right {
+          float: right;
+      }
+  }
+  @media only screen and (max-device-width: 670px) {
+      display: none;
+  } // @media #{$mobile-only} {
+  //     display: none;
+  // }
+}
