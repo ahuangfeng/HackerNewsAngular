@@ -14,6 +14,8 @@ export class SingleContributionComponent implements OnInit {
   @Input() contribution: any;
 
   contributionShow: Contribution;
+  deleted = false;
+
 
   constructor(private authService: AuthService, private httpService: HttpService) { }
 
@@ -26,7 +28,10 @@ export class SingleContributionComponent implements OnInit {
   }
 
   delete() {
-    console.log("TODO: delete");
+    this.httpService.deleteContribution(this.contributionShow.id).then(data => {
+      console.log("deleted", data);
+      this.deleted = true;
+    }).catch(this.handleError);
   }
 
   edit() {

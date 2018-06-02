@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../providers/http.service";
-import { Router, ActivatedRoute } from '@angular/router';
+import {ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Contribution } from '../../model/contribution';
 
@@ -21,8 +21,8 @@ export class FullContributionComponent implements OnInit {
   });
 
   currentID;
-  
-  constructor(private route: ActivatedRoute,private httpService: HttpService, private router: Router) {
+
+  constructor(private route: ActivatedRoute,private httpService: HttpService) {
     this.currentID = this.getContributionId();
     this.getContribution(this.currentID);
   }
