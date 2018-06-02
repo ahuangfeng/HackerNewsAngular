@@ -51,7 +51,7 @@
                     </a>
                   </span>
                   <span *ngIf="ownContribution()"> |
-                    <a (click)="edit()">
+                    <a [routerLink]="['/contribution/'+contributionShow.id+'/edit']" routerLinkActive="active">
                       edit
                     </a>
                   </span>
