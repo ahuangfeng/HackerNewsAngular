@@ -32,9 +32,10 @@
           float: right;
       }
   }
-  @media only screen and (max-device-width: 670px) {
-      display: none;
-  } // @media #{$mobile-only} {
+//   @media only screen and (max-device-width: 670px) {
+//       display: none;
+//   } 
+  // @media #{$mobile-only} {
   //     display: none;
   // }
 }
