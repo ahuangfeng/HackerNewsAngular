@@ -9,6 +9,7 @@ export class ContributionService {
 
   public mainContributions = [];
   public newContributions = [];
+  public askContributions = [];
 
   constructor(private httpService: HttpService) {
   }
@@ -37,4 +38,15 @@ export class ContributionService {
     });
   }
 
+  getAskContributions(){
+    this.httpService.getAskContributions().then(data => {
+      console.log("askContributions", data);
+      this.askContributions = data['contributions'];
+      this.askContributions.sort(function(a,b){
+        return b.points - a.points;
+      });
+    }).catch(err => {
+      console.log("error:", err);
+    });
+  }
 }
