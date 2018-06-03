@@ -39,9 +39,10 @@ export class SingleContributionComponent implements OnInit {
   }
 
   update() {
-    this.httpService.getContributionById(this.contribution.id).then(data => {
-      this.contributionShow = new Contribution(data['contribution']);
-    }).catch(this.handleError);
+    this.contributionService.updateContributionsSubject.next(true);
+    // this.httpService.getContributionById(this.contribution.id).then(data => {
+    //   this.contributionShow = new Contribution(data['contribution']);
+    // }).catch(this.handleError);
   }
 
   vote() {

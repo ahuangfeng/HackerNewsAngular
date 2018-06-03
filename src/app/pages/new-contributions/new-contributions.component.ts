@@ -9,12 +9,21 @@ import { ContributionService } from '../../providers/contribution.service';
 })
 export class NewContributionsComponent implements OnInit {
 
+  subscriber = undefined;
   constructor(public contributionService:ContributionService) {
-
+    this.contributionService.getNewContributions();
+    this.subscriber = this.contributionService.updateContributionsSubject.subscribe(data => {
+      this.contributionService.getNewContributions();
+    });
   }
 
   ngOnInit() {
-    this.contributionService.getNewContributions();
+  }
+
+  ngOnDestroy(){
+    if(this.subscriber != undefined){
+      this.subscriber.unsubscribe();
+    }
   }
 
 }
