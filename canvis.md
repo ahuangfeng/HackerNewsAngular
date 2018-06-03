@@ -4,3 +4,4 @@
 - afegir un login a partir del callback --> fet
 - afegir una variable a la contribution per saber si el user ha votat o no --> fet
 - afegir una variable al comentari per saber si el user ha votat o no --> fet
+- order by a comments per a que els ordeni per ordre de creacio --> fet
