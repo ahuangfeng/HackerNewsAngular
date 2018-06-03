@@ -5,11 +5,9 @@
 - Alex Huang Feng
 - Pau González Montiel
 - Carla Varea Parra
-- Sergi Ventura
-- Sara Bourjila
 
 ## Aplicació desplegada a Heroku
-[Aplicació a Heroku](https://g11d-hackernews.herokuapp.com/)
+[Aplicació a Heroku](http://g11d-hackernewsangular.herokuapp.com/)
 
 ## Repositori Back-End
 [Bitbucket](https://bitbucket.org/ahuangfeng/g11d_hackernews/)
