@@ -1,10 +1,8 @@
-<div class="post" *ngFor="let contribution of contributions; let i = index">
+<div class="post" *ngFor="let contribution of contributionService.mainContributions; let i = index">
   <div style="float: left; width: 30px; ">
     {{i}}.
   </div>
-  <!-- Cada linia de contribució la crea aquest component a /components/single-contribution.component.html -->
   <div>
     <single-contribution [contribution]="contribution"></single-contribution>
   </div>
-
 </div>

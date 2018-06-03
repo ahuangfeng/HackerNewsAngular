@@ -1,68 +1,68 @@
-<div *ngIf="!deleted" style="padding-left: 10px;">
-    <div *ngIf="!contributionShow.hasVoted" style="float: left; padding-right: 14px;">
-          <button (click)="vote()" type="button" class="btn btn-default btn-sm">
-            <i class="fas fa-angle-up"></i>
-          </button>
+<div style="padding-left: 10px;">
+  <div *ngIf="!contributionShow.hasVoted" style="float: left; padding-right: 14px;">
+    <button (click)="vote()" type="button" class="btn btn-default btn-sm">
+      <i class="fas fa-angle-up"></i>
+    </button>
+  </div>
+  <div *ngIf="contributionShow.hasVoted" style="float: left; padding-right: 14px;">
+    <button (click)="unvote()" type="button" class="btn btn-default btn-sm">
+      <i class="fas fa-angle-down"></i>
+    </button>
+  </div>
+  <div class="item-block">
+    <div>
+      <div style="margin-bottom: 0px;">
+        <div *ngIf="contributionShow.hasUrl()">
+          <a class="title" href="{{contributionShow.url}}">
+            {{contributionShow.title}}
+          </a>
+          <span class="domain">({{contributionShow.domain()}})</span>
         </div>
-        <div *ngIf="contributionShow.hasVoted" style="float: left; padding-right: 14px;">
-          <button (click)="unvote()" type="button" class="btn btn-default btn-sm">
-            <i class="fas fa-angle-down"></i>
-          </button>
+        <div *ngIf="!contributionShow.hasUrl()">
+          <a class="title" [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active">
+            {{contributionShow.title}}
+          </a>
         </div>
-        <div class="item-block">
-          <div>
-            <div style="margin-bottom: 0px;">
-              <div *ngIf="contributionShow.hasUrl()">
-                <a class="title" href="{{contributionShow.url}}">
-                  {{contributionShow.title}}
-                </a>
-                <span class="domain">({{contributionShow.domain()}})</span>
-              </div>
-              <div *ngIf="!contributionShow.hasUrl()">
-                <a class="title" [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active">
-                  {{contributionShow.title}}
-                </a>
-              </div>
 
-              <div class="subtext-palm">
-                <div class="details">
-                  <span class="name">
-                    <a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a>
-                  </span>
-                  <span class="right">{{contributionShow.points}} ★</span>
-                </div>
-                <div class="details">
-                  {{ contributionShow.created_at }}
-                  <a [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active" class="comment-number"> • {{contributionShow.numComments }} comments
-                  </a>
-                </div>
-              </div>
-
-              <div class="subtext-laptop">
-                <span>
-                  {{contributionShow.points}} points by
-                  <a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a>
-                </span>
-                <span class="item-details">
-                  {{contributionShow.created_at}}
-                  <span> |
-                    <a [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active">
-                      {{contributionShow.numComments}} comments
-                    </a>
-                  </span>
-                  <span *ngIf="ownContribution()"> |
-                    <a [routerLink]="['/contribution/'+contributionShow.id+'/edit']" routerLinkActive="active">
-                      edit
-                    </a>
-                  </span>
-                  <span *ngIf="ownContribution()"> |
-                    <a (click)="delete()">
-                      delete
-                    </a>
-                  </span>
-                </span>
-              </div>
-            </div>
+        <div class="subtext-palm">
+          <div class="details">
+            <span class="name">
+              <a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a>
+            </span>
+            <span class="right">{{contributionShow.points}} ★</span>
           </div>
+          <div class="details">
+            {{ contributionShow.created_at }}
+            <a [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active" class="comment-number"> • {{contributionShow.numComments }} comments
+            </a>
+          </div>
+        </div>
+
+        <div class="subtext-laptop">
+          <span>
+            {{contributionShow.points}} points by
+            <a [routerLink]="['/user', contributionShow.user_id]" routerLinkActive="active">@{{contributionShow.username}}</a>
+          </span>
+          <span class="item-details">
+            {{contributionShow.created_at}}
+            <span> |
+              <a [routerLink]="['/contribution',contributionShow.id]" routerLinkActive="active">
+                {{contributionShow.numComments}} comments
+              </a>
+            </span>
+            <span *ngIf="ownContribution()"> |
+              <a [routerLink]="['/contribution/'+contributionShow.id+'/edit']" routerLinkActive="active">
+                edit
+              </a>
+            </span>
+            <span *ngIf="ownContribution()"> |
+              <a (click)="delete()">
+                delete
+              </a>
+            </span>
+          </span>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

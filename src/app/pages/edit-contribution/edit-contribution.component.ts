@@ -15,17 +15,12 @@ export class EditContributionComponent implements OnInit {
   errorMessage;
   contribution: Contribution;
   currentID;
-  title;
-  url;
-  text;
 
   editForm = new FormGroup({
     title: new FormControl('', Validators.required),
     url: new FormControl(''),
     ask: new FormControl('')
   });
-
-
 
   constructor(private httpService: HttpService, private router: Router, private route: ActivatedRoute) {
     this.currentID = this.getContributionId();
@@ -48,9 +43,7 @@ export class EditContributionComponent implements OnInit {
       else {
         this.editForm.value.url = this.contribution.url;
         this.editForm.value.ask = '';
-
       }
-
     }).then(comments => {
       console.log(comments)
     }).catch(err => {

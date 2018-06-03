@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Contribution } from '../../model/contribution';
 import { AuthService } from '../../providers/auth.service';
 import { HttpService } from '../../providers/http.service';
+import { ContributionService } from '../../providers/contribution.service';
 
 @Component({
   selector: 'single-contribution',
@@ -14,10 +15,8 @@ export class SingleContributionComponent implements OnInit {
   @Input() contribution: any;
 
   contributionShow: Contribution;
-  deleted = false;
 
-
-  constructor(private authService: AuthService, private httpService: HttpService) { }
+  constructor(private authService: AuthService, private httpService: HttpService, public contributionService: ContributionService) { }
 
   ngOnInit() {
     this.contributionShow = new Contribution(this.contribution);
@@ -30,7 +29,7 @@ export class SingleContributionComponent implements OnInit {
   delete() {
     this.httpService.deleteContribution(this.contributionShow.id).then(data => {
       console.log("deleted", data);
-      this.deleted = true;
+      this.contributionService.getMainContributions();
     }).catch(this.handleError);
   }
 
