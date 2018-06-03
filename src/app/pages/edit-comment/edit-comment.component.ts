@@ -25,6 +25,9 @@ export class EditCommentComponent implements OnInit {
     this.getCommentById(this.contributionId,this.commentId);
   }
 
+  ngOnInit() {
+  }
+
   getContributionId(): string {
     return this.route.snapshot.paramMap.get('contribution_id');
   }
@@ -43,14 +46,11 @@ export class EditCommentComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   editComment() {
-    if (this.editForm.value.comment === "") {
-      this.errorMessage = "You must enter a comment."
-    }
-    else {
+    if (!this.editForm.valid) {
+      this.errorMessage = "You must enter a comment.";
+      return;
+    } else {
       this.httpService.editComment(this.contributionId, this.commentId, this.editForm.value.comment).then(data => {
         this.router.navigateByUrl('/contribution/'+ this.contributionId);
       }).catch(err => {

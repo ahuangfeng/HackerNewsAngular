@@ -44,27 +44,27 @@ export class HttpService {
   }
 
   postNewContributions(title, url, text) {
-    var body = {title: title};
-    if(url == undefined){
+    var body = { title: title };
+    if (url == undefined) {
       body['text'] = text;
-    }else{
+    } else {
       body['url'] = url;
     }
     return this.http.post(environment.apiServer + 'contributions', body, this.getHeaders()).toPromise();
   }
 
   editContribution(id, title, url, text) {
-    var body = {title: title};
-    if(url == undefined){
+    var body = { title: title };
+    if (url == undefined) {
       body['text'] = text;
-    }else{
+    } else {
       body['url'] = url;
     }
-    return this.http.put(environment.apiServer + 'contributions/'+ id, body, this.getHeaders()).toPromise();
+    return this.http.put(environment.apiServer + 'contributions/' + id, body, this.getHeaders()).toPromise();
   }
 
-  editComment(contribution_id, id, body) {
-    return this.http.put(environment.apiServer + 'contributions/'+ contribution_id + '/comments/' + id, {body}, this.getHeaders()).toPromise();
+  editComment(contribution_id, commentId, comment) {
+    return this.http.put(environment.apiServer + 'contributions/' + contribution_id + '/comments/' + commentId, { body: comment }, this.getHeaders()).toPromise();
   }
 
   getComments(contribution_id) {
@@ -72,7 +72,7 @@ export class HttpService {
   }
 
   postComment(contribution_id, comment) {
-    return this.http.post(environment.apiServer + 'contributions/' + contribution_id + '/comments', {body: comment}, this.getHeaders()).toPromise();
+    return this.http.post(environment.apiServer + 'contributions/' + contribution_id + '/comments', { body: comment }, this.getHeaders()).toPromise();
   }
 
   login(provider, uid, nickname, token, secret) {
@@ -80,7 +80,7 @@ export class HttpService {
     return this.http.post(environment.apiServer + 'login', body, this.getHeaders()).toPromise();
   }
 
-  getContribution(id){
+  getContribution(id) {
     return this.http.get(environment.apiServer + 'contributions/' + id, this.getHeaders()).toPromise();
   }
 
@@ -89,39 +89,39 @@ export class HttpService {
   }
 
   getThreads(user_id) {
-    return this.http.get(environment.apiServer + 'users/' + user_id +'/comments', this.getHeaders()).toPromise();
+    return this.http.get(environment.apiServer + 'users/' + user_id + '/comments', this.getHeaders()).toPromise();
   }
 
-  voteContribution(id){
-    return this.http.post(environment.apiServer + 'contributions/'+id+'/vote',{}, this.getHeaders()).toPromise();
+  voteContribution(id) {
+    return this.http.post(environment.apiServer + 'contributions/' + id + '/vote', {}, this.getHeaders()).toPromise();
   }
 
-  unvoteContribution(id){
-    return this.http.post(environment.apiServer + 'contributions/'+id+'/unvote',{}, this.getHeaders()).toPromise();
+  unvoteContribution(id) {
+    return this.http.post(environment.apiServer + 'contributions/' + id + '/unvote', {}, this.getHeaders()).toPromise();
   }
 
-  voteComment(contributionId,commentId){
-    return this.http.post(environment.apiServer + 'contributions/'+contributionId+'/comments/'+commentId+'/vote',{}, this.getHeaders()).toPromise();
+  voteComment(contributionId, commentId) {
+    return this.http.post(environment.apiServer + 'contributions/' + contributionId + '/comments/' + commentId + '/vote', {}, this.getHeaders()).toPromise();
   }
 
-  unvoteComment(contributionId,commentId){
-    return this.http.post(environment.apiServer + 'contributions/'+contributionId+'/comments/'+commentId+'/unvote',{}, this.getHeaders()).toPromise();
+  unvoteComment(contributionId, commentId) {
+    return this.http.post(environment.apiServer + 'contributions/' + contributionId + '/comments/' + commentId + '/unvote', {}, this.getHeaders()).toPromise();
   }
 
-  getContributionById(id){
-    return this.http.get(environment.apiServer + 'contributions/'+id, this.getHeaders()).toPromise();
+  getContributionById(id) {
+    return this.http.get(environment.apiServer + 'contributions/' + id, this.getHeaders()).toPromise();
   }
 
-  getCommentById(contribution_id,commentId){
-    return this.http.get(environment.apiServer + 'contributions/'+contribution_id+'/comments/'+commentId, this.getHeaders()).toPromise();
+  getCommentById(contribution_id, commentId) {
+    return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments/' + commentId, this.getHeaders()).toPromise();
   }
 
-  deleteComment(contribution_id,commentId){
-    return this.http.delete(environment.apiServer + 'contributions/'+contribution_id+'/comments/'+commentId, this.getHeaders()).toPromise();
+  deleteComment(contribution_id, commentId) {
+    return this.http.delete(environment.apiServer + 'contributions/' + contribution_id + '/comments/' + commentId, this.getHeaders()).toPromise();
   }
 
-  deleteContribution(contribution_id){
-    return this.http.delete(environment.apiServer + 'contributions/'+contribution_id, this.getHeaders()).toPromise();
+  deleteContribution(contribution_id) {
+    return this.http.delete(environment.apiServer + 'contributions/' + contribution_id, this.getHeaders()).toPromise();
   }
 
 }

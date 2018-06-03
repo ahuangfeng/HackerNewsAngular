@@ -11,8 +11,6 @@ import { ReplyComponent } from './pages/reply/reply.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditCommentComponent } from './pages/edit-comment/edit-comment.component';
 
-
-
 export const appRoutes: Routes = [
   {
     path: '',
