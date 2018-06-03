@@ -22,7 +22,7 @@ export class FullContributionComponent implements OnInit {
 
   currentID;
 
-  constructor(private route: ActivatedRoute,private httpService: HttpService, private router: Router) {
+  constructor(private route: ActivatedRoute, private httpService: HttpService, private router: Router) {
     this.currentID = this.getContributionId();
     this.getContribution(this.currentID);
   }
@@ -30,14 +30,14 @@ export class FullContributionComponent implements OnInit {
   ngOnInit() {
   }
 
-  getContribution(id){
+  getContribution(id) {
     this.httpService.getContribution(id).then(data => {
       console.log("DATA:", data);
       this.contribution = new Contribution(data['contribution']);
       return this.httpService.getComments(id);
     }).then(comments => {
       console.log("comments:", comments);
-      this.comments = comments['comments'];
+      this.comments = this.buildTree(comments['comments']);
     }).catch(err => {
       this.errorMessage = err.error.message;
     });
@@ -46,11 +46,28 @@ export class FullContributionComponent implements OnInit {
   getComments(id) {
     this.httpService.getComments(id).then(data => {
       console.log("data", data['comments']);
-      this.comments = data['comments'];
+      this.comments = this.buildTree(data['comments']);
     }).catch(err => {
       console.log("error:", err);
       this.errorMessage = err.error.message;
     });
+  }
+
+  buildTree(comments: [any]) {
+    var map = {}, node, roots = [], i;
+    for (i = 0; i < comments.length; i += 1) {
+      map[comments[i].id] = i; 
+      comments[i].replies = []; 
+    }
+    for (i = 0; i < comments.length; i += 1) {
+      node = comments[i];
+      if (node.parent_id !== null) {
+        comments[map[node.parent_id]].replies.push(node);
+      } else {
+        roots.push(node);
+      }
+    }
+    return roots;
   }
 
   createComment() {

@@ -18,4 +18,21 @@ export class ThreadsService {
       console.log("error:", err);
     });
   }
+
+  buildTree(comments: [any]) {
+    var map = {}, node, roots = [], i;
+    for (i = 0; i < comments.length; i += 1) {
+      map[comments[i].id] = i; 
+      comments[i].replies = []; 
+    }
+    for (i = 0; i < comments.length; i += 1) {
+      node = comments[i];
+      if (node.parent_id !== null) {
+        comments[map[node.parent_id]].replies.push(node);
+      } else {
+        roots.push(node);
+      }
+    }
+    return roots;
+  }
 }

@@ -2,6 +2,10 @@
   margin-top: 1%;
 }
 
+.reply{
+    padding-left: 30px;
+}
+
 .color {
   color: rgb(100, 100, 100);
 }
@@ -28,9 +32,10 @@
           float: right;
       }
   }
-  @media only screen and (max-device-width: 670px) {
-      display: none;
-  } // @media #{$mobile-only} {
+//   @media only screen and (max-device-width: 670px) {
+//       display: none;
+//   } 
+  // @media #{$mobile-only} {
   //     display: none;
   // }
 }

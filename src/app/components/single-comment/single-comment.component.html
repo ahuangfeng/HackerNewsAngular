@@ -20,14 +20,19 @@
       </span>
       <span *ngIf="ownComment()" class="color">
         |
-        <a [routerLink]="['/contribution/'+commentShow.contribution_id+'/edit/'+commentShow.id]" routerLinkActive="active">
-          edit
-        </a> |
+        <a (click)="edit()" routerLinkActive="active">edit</a> |
         <a (click)="delete()" routerLinkActive="active">delete</a>
       </span>
       <p class="commentBody">
         {{commentShow.body}}
       </p>
+    </div>
+  </div>
+  <div *ngIf="commentShow.replies">
+    <div *ngIf="commentShow.replies.length > 0">
+      <div class="reply" *ngFor="let comment of commentShow.replies">
+        <app-single-comment [comment]="comment"></app-single-comment>
+      </div>
     </div>
   </div>
 </div>
