@@ -28,9 +28,6 @@ export class SingleCommentComponent implements OnInit {
     this.router.navigateByUrl('/user/'+this.authService.currentUserID);
   }
 
-  reply(){
-    console.log("TODO: reply!", this.commentShow.id);
-  }
 
   ownComment(){
     return this.authService.currentUserID == this.commentShow.user_id;
@@ -39,7 +36,7 @@ export class SingleCommentComponent implements OnInit {
   edit(){
     console.log("TODO: Edit!", this.commentShow.id);
   }
-  
+
   delete(){
     this.httpService.deleteComment(this.commentShow.contribution_id,this.commentShow.id).then(data => {
       console.log("deleted", data);

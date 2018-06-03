@@ -10,6 +10,8 @@ import { EditContributionComponent } from './pages/edit-contribution/edit-contri
 import { ReplyComponent } from './pages/reply/reply.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditCommentComponent } from './pages/edit-comment/edit-comment.component';
+import { NewReplyComponent } from './pages/new-reply/new-reply.component';
+
 
 
 
@@ -29,5 +31,6 @@ export const appRoutes: Routes = [
   { path: 'reply/:id', component: ReplyComponent },
   { path: 'contribution/:id/edit', component: EditContributionComponent },
   { path: 'contribution/:contribution_id/edit/:id', component: EditCommentComponent },
+  { path: 'contribution/:contribution_id/comments/:id/reply', component: NewReplyComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
