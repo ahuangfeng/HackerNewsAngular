@@ -7,6 +7,8 @@ import { SubmitComponent } from './pages/submit/submit.component';
 import { UserComponent } from './pages/user/user.component';
 import { FullContributionComponent } from './pages/full-contribution/full-contribution.component';
 import { EditContributionComponent } from './pages/edit-contribution/edit-contribution.component';
+import { EditCommentComponent } from './pages/edit-comment/edit-comment.component';
+
 
 
 export const appRoutes: Routes = [
@@ -22,6 +24,8 @@ export const appRoutes: Routes = [
   { path: 'ask', component: AskComponent },
   { path: 'submit', component: SubmitComponent },
   { path: 'user/:id', component: UserComponent },
-  { path: 'contribution/:id/edit', component: EditContributionComponent }
+  { path: 'contribution/:id/edit', component: EditContributionComponent },
+  { path: 'contribution/:contribution_id/edit/:id', component: EditCommentComponent }
+
 
 ];

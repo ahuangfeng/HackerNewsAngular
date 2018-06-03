@@ -1,0 +1,17 @@
+<div>
+  <h3 style="margin-top: 20px;">
+    Edit a comment
+  </h3>
+  <p class="warning">
+    {{errorMessage}}
+  </p>
+  <form [formGroup]="editForm">
+    <div class="form-group">
+      <label class="center-block">Comment:
+        <textarea class="form-control" formControlName="comment"></textarea>
+      </label>
+    </div>
+    <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="editComment()">submit</button>
+  </form>
+
+</div>
