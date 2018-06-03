@@ -29,6 +29,7 @@ import { SingleContributionComponent } from './components/single-contribution/si
 import { SingleCommentComponent } from './components/single-comment/single-comment.component';
 import { EditContributionComponent } from './pages/edit-contribution/edit-contribution.component';
 import { ReplyComponent } from './pages/reply/reply.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // export function tokenGetter() {
 //   return localStorage.getItem('access_token');
@@ -48,6 +49,7 @@ import { ReplyComponent } from './pages/reply/reply.component';
     SingleCommentComponent,
     EditContributionComponent,
     ReplyComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     RouterModule.forRoot(
