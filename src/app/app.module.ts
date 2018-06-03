@@ -28,6 +28,8 @@ import { FullContributionComponent } from './pages/full-contribution/full-contri
 import { SingleContributionComponent } from './components/single-contribution/single-contribution.component';
 import { SingleCommentComponent } from './components/single-comment/single-comment.component';
 import { EditContributionComponent } from './pages/edit-contribution/edit-contribution.component';
+import { ReplyComponent } from './pages/reply/reply.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditCommentComponent } from './pages/edit-comment/edit-comment.component';
 
 // export function tokenGetter() {
@@ -47,6 +49,8 @@ import { EditCommentComponent } from './pages/edit-comment/edit-comment.componen
     SingleContributionComponent,
     SingleCommentComponent,
     EditContributionComponent,
+    ReplyComponent,
+    PageNotFoundComponent,
     EditCommentComponent,
   ],
   imports: [

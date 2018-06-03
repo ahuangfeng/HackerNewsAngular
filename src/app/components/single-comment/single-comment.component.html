@@ -17,6 +17,9 @@
       </span> |
       <span class="color">
         {{commentShow.created_at}}
+      </span> | 
+      <span>
+        <a (click)="reply()" routerLinkActive="active">reply</a>
       </span>
       <span *ngIf="ownComment()" class="color">
         |
@@ -24,6 +27,7 @@
           edit
         </a> |
         <a (click)="delete()" routerLinkActive="active">delete</a>
+        
       </span>
       <p class="commentBody">
         {{commentShow.body}}

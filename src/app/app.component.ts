@@ -28,7 +28,6 @@ export class AppComponent {
         return this.authService.loginToOurServer(provider, uid, nickname, token, secret);
       }).then(userConnected => {
         this.authService.setCredentials(userConnected['user']);
-        // TODO: mirar si es pot fer sense refresh... Puto Angular6, no funciona com el 5....xD
         window.location.reload();
       }).catch(err => {
         console.log("Error:", err);
@@ -64,7 +63,6 @@ export class AppComponent {
       }).then(userConnected => {
         this.authService.setCredentials(userConnected['user']);
         this.router.navigateByUrl('/submit');
-        // TODO: mirar si es pot fer sense refresh... Puto Angular6, no funciona com el 5....xD
         window.location.reload();
       }).catch(err => {
         console.error("Error: ", err);
