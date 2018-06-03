@@ -54,22 +54,19 @@ export class FullContributionComponent implements OnInit {
   }
 
   buildTree(comments: [any]) {
-    console.log("Comments tree:", comments);
     var map = {}, node, roots = [], i;
     for (i = 0; i < comments.length; i += 1) {
-      map[comments[i].id] = i; // initialize the map
-      comments[i].replies = []; // initialize the replies
+      map[comments[i].id] = i; 
+      comments[i].replies = []; 
     }
     for (i = 0; i < comments.length; i += 1) {
       node = comments[i];
       if (node.parent_id !== null) {
-        // if you have dangling branches check that map[node.parentId] exists
         comments[map[node.parent_id]].replies.push(node);
       } else {
         roots.push(node);
       }
     }
-    console.log("Tree:", roots);
     return roots;
   }
 

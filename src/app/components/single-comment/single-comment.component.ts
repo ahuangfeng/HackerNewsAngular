@@ -22,7 +22,6 @@ export class SingleCommentComponent implements OnInit {
 
   ngOnInit() {
     this.commentShow = new Comment(this.comment);
-    console.log("comment:", this.comment);
   }
 
   me(){
