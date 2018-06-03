@@ -9,6 +9,8 @@ import { FullContributionComponent } from './pages/full-contribution/full-contri
 import { EditContributionComponent } from './pages/edit-contribution/edit-contribution.component';
 import { ReplyComponent } from './pages/reply/reply.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EditCommentComponent } from './pages/edit-comment/edit-comment.component';
+
 
 
 export const appRoutes: Routes = [
@@ -26,5 +28,6 @@ export const appRoutes: Routes = [
   { path: 'user/:id', component: UserComponent },
   { path: 'reply/:id', component: ReplyComponent },
   { path: 'contribution/:id/edit', component: EditContributionComponent },
+  { path: 'contribution/:contribution_id/edit/:id', component: EditCommentComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

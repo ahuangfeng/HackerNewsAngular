@@ -30,6 +30,7 @@ import { SingleCommentComponent } from './components/single-comment/single-comme
 import { EditContributionComponent } from './pages/edit-contribution/edit-contribution.component';
 import { ReplyComponent } from './pages/reply/reply.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EditCommentComponent } from './pages/edit-comment/edit-comment.component';
 
 // export function tokenGetter() {
 //   return localStorage.getItem('access_token');
@@ -50,6 +51,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     EditContributionComponent,
     ReplyComponent,
     PageNotFoundComponent,
+    EditCommentComponent,
   ],
   imports: [
     RouterModule.forRoot(

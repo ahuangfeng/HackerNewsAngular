@@ -63,6 +63,10 @@ export class HttpService {
     return this.http.put(environment.apiServer + 'contributions/'+ id, body, this.getHeaders()).toPromise();
   }
 
+  editComment(contribution_id, id, body) {
+    return this.http.put(environment.apiServer + 'contributions/'+ contribution_id + '/comments/' + id, {body}, this.getHeaders()).toPromise();
+  }
+
   getComments(contribution_id) {
     return this.http.get(environment.apiServer + 'contributions/' + contribution_id + '/comments', this.getHeaders()).toPromise();
   }
