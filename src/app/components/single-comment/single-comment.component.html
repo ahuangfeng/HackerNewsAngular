@@ -20,7 +20,9 @@
       </span>
       <span *ngIf="ownComment()" class="color">
         |
-        <a (click)="edit()" routerLinkActive="active">edit</a> |
+        <a [routerLink]="['/contribution/'+commentShow.contribution_id+'/edit/'+commentShow.id]" routerLinkActive="active">
+          edit
+        </a> |
         <a (click)="delete()" routerLinkActive="active">delete</a>
       </span>
       <p class="commentBody">
