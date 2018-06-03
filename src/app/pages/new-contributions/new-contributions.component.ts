@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../../providers/http.service';
+import { ContributionService } from '../../providers/contribution.service';
 
 
 @Component({
@@ -9,22 +9,12 @@ import { HttpService } from '../../providers/http.service';
 })
 export class NewContributionsComponent implements OnInit {
 
-  contributions = [];
-
-  constructor(private httpService: HttpService) {
+  constructor(public contributionService:ContributionService) {
 
   }
 
   ngOnInit() {
-    this.httpService.getNewContributions().then(data => {
-      console.log("data", data);
-      this.contributions = data['contributions'];
-      this.contributions.sort(function(a,b){
-        return b.created_at - a.created_at;
-      });
-    }).catch(err => {
-      console.log("error:", err);
-    });
+    this.contributionService.getNewContributions();
   }
 
 }
