@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {HttpService} from "../../providers/http.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { HttpService } from "../../providers/http.service";
 import { Contribution } from '../../model/contribution';
 
 
@@ -13,7 +13,7 @@ import { Contribution } from '../../model/contribution';
 export class EditContributionComponent implements OnInit {
 
   errorMessage;
-  contribution: Contribution;
+  // contribution: Contribution;
   currentID;
 
   editForm = new FormGroup({
@@ -28,24 +28,18 @@ export class EditContributionComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
-  getContribution(id){
+  getContribution(id) {
     this.httpService.getContribution(id).then(data => {
-      this.contribution = new Contribution(data['contribution']);
-      console.log("DATA:", this.contribution);
-      this.editForm.value.title = this.contribution.title;
-      if(this.contribution.url === undefined) {
-        this.editForm.value.ask = this.contribution.text;
-        this.editForm.value.url = '';
+      var contribution = new Contribution(data['contribution']);
+      // console.log("getContribution:", data);
+      this.editForm.patchValue({ title: contribution.title });
+      if(contribution.hasUrl()){
+        this.editForm.patchValue({ url: contribution.url });
+      }else{
+        this.editForm.patchValue({ ask: contribution.text });
       }
-      else {
-        this.editForm.value.url = this.contribution.url;
-        this.editForm.value.ask = '';
-      }
-    }).then(comments => {
-      console.log(comments)
     }).catch(err => {
       this.errorMessage = err.error.message;
     });
@@ -55,56 +49,46 @@ export class EditContributionComponent implements OnInit {
     return this.route.snapshot.paramMap.get('id');
   }
 
-
   editContribution() {
     var values = this.editForm.value;
-    console.log("tiiitle :", this.editForm.value)
-    console.log("title: "+ this.contribution.url)
-    // console.log("EOO:", this.submitForm.value);
+    console.log("edit form :", this.editForm.value);
+
     if (values.title === '') {
       this.errorMessage = "You have to enter a valid title.";
       return;
     }
 
+    if ((values.url == "") && (values.ask == '')) {
+      this.errorMessage = "You have to enter an valid url OR a valid text.";
+      return;
+    }
 
+    if ((values.url != "") && (values.ask != '')) {
+      this.errorMessage = "You have to choose between an url contribution or a text contribution.";
+      return;
+    }
 
-      if ((values.url == "") && (values.ask == '')) {
-        this.errorMessage = "You have to enter an valid url OR a valid text.";
-        return;
-      }
-
-
-
-      if ((values.url != "") && (values.ask != '')) {
-        this.errorMessage = "You have to choose between an url contribution or a text contribution.";
-        return;
-      }
-
-
-
-      if (values.url == "") {
-        console.log("ASK:", values.ask);
-        this.httpService.editContribution(this.currentID, values.title, undefined, values.ask).then(data => {
-          this.router.navigateByUrl('/ask');
-          // console.log("DATA:", data);
+    if (values.url == "") {
+      console.log("ASK:", values.ask);
+      this.httpService.editContribution(this.currentID, values.title, undefined, values.ask).then(data => {
+        console.log("edited:", data);
+        this.router.navigateByUrl('/ask');
+      }).catch(err => {
+        this.errorMessage = err.error.message;
+      });
+    } else {
+      var expression = '^(http|https)://'
+      var regex = new RegExp(expression);
+      if (values.url.match(regex)) {
+        this.httpService.editContribution(this.currentID, values.title, values.url, undefined).then(data => {
+          this.router.navigateByUrl('/main');
         }).catch(err => {
           this.errorMessage = err.error.message;
         });
       } else {
-        var expression = '^(http|https)://'
-        var regex = new RegExp(expression);
-        if (values.url.match(regex)) {
-          this.httpService.editContribution(this.currentID, values.title, values.url, undefined).then(data => {
-            this.router.navigateByUrl('/main');
-          }).catch(err => {
-            this.errorMessage = err.error.message;
-          });
-        } else {
-          this.errorMessage = "Enter a valid URL: beginning by 'http://' or 'https://' . ";
-        }
+        this.errorMessage = "Enter a valid URL: beginning by 'http://' or 'https://' . ";
       }
-
+    }
   }
-
 
 }

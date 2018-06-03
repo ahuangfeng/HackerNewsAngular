@@ -9,19 +9,19 @@
 
     <div class="form-group">
       <label class="center-block">Title:
-        <input class="form-control" value={{contribution.title}} formControlName="title">
+        <input class="form-control" formControlName="title">
       </label>
     </div>
 
     <div class="form-group">
       <label class="center-block">Url:
-        <input class="form-control" value={{contribution.url}} formControlName="url">
+        <input class="form-control" formControlName="url">
       </label>
     </div>
 
     <div class="form-group">
       <label class="center-block">Ask:
-        <textarea class="form-control" value={{contribution.text}} formControlName="ask"></textarea>
+        <textarea class="form-control" formControlName="ask"></textarea>
       </label>
     </div>
     <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="editContribution()">submit</button>
