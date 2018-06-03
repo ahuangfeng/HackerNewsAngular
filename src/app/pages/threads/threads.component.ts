@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../providers/http.service';
 import { AuthService } from '../../providers/auth.service';
+import { ThreadsService } from '../../providers/threads.service';
 
 @Component({
   selector: 'app-threads',
@@ -9,15 +10,11 @@ import { AuthService } from '../../providers/auth.service';
 })
 export class ThreadsComponent implements OnInit {
 
-  comments = [];
-  constructor(private httpService: HttpService, private authService: AuthService) { }
+  constructor(public threadsService:ThreadsService) { 
+    this.threadsService.getThreads();
+  }
 
   ngOnInit() {
-    this.httpService.getThreads(this.authService.currentUserID).then(data => {
-      console.log("data", data);
-      this.comments = data['comments'];
-    }).catch(err => {
-      console.log("error:", err);
-    });
+    
   }
 }

@@ -10,11 +10,10 @@ import { ContributionService } from '../../providers/contribution.service';
 export class MainComponent implements OnInit {
 
   constructor(public contributionService: ContributionService) {
-
+    this.contributionService.getMainContributions();
   }
 
   ngOnInit() {
-    this.contributionService.getMainContributions();
   }
 
 }

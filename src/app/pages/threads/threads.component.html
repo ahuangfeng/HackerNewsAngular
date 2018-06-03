@@ -1,6 +1,5 @@
 <div class="thread-component">
-    <div class="post" *ngFor="let comment of comments">
-      <!-- Cada linia de contribució la crea aquest component a /components/single-contribution.component.html -->
+    <div class="post" *ngFor="let comment of threadsService.comments">
       <div>
         <app-single-comment [comment]="comment"></app-single-comment>
       </div>

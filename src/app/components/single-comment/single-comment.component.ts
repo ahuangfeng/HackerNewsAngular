@@ -3,6 +3,7 @@ import { Comment } from '../../model/comment';
 import { AuthService } from '../../providers/auth.service';
 import { Router } from '@angular/router';
 import { HttpService } from '../../providers/http.service';
+import { ThreadsService } from '../../providers/threads.service';
 
 
 @Component({
@@ -15,9 +16,8 @@ export class SingleCommentComponent implements OnInit {
   @Input() comment: any;
 
   commentShow: Comment;
-  deleted = false;
 
-  constructor(private authService: AuthService, private router: Router, private httpService:HttpService) { }
+  constructor(private authService: AuthService, private router: Router, private httpService:HttpService, public threadsService:ThreadsService) { }
 
   ngOnInit() {
     this.commentShow = new Comment(this.comment);
@@ -38,7 +38,7 @@ export class SingleCommentComponent implements OnInit {
   delete(){
     this.httpService.deleteComment(this.commentShow.contribution_id,this.commentShow.id).then(data => {
       console.log("deleted", data);
-      this.deleted = true;
+      this.threadsService.getThreads();
     }).catch(this.handleError);
   }
 
