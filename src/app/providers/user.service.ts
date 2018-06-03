@@ -8,10 +8,10 @@ import { HttpService } from './http.service';
 export class UserService {
 
   userShow: User;
-  
+
   constructor(private httpService: HttpService) { }
 
-  getUser(id){
+  getUser(id) {
     this.httpService.getUser(id).then(data => {
       console.log("data", data);
       this.userShow = data['user'];
@@ -19,4 +19,5 @@ export class UserService {
       console.log("error:", err);
     });
   }
+
 }

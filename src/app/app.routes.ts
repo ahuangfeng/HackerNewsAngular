@@ -10,6 +10,7 @@ import { EditContributionComponent } from './pages/edit-contribution/edit-contri
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditCommentComponent } from './pages/edit-comment/edit-comment.component';
 import { NewReplyComponent } from './pages/new-reply/new-reply.component';
+import { EditUserComponent } from './pages/edit-user/edit-user.component';
 
 
 export const appRoutes: Routes = [
@@ -25,6 +26,7 @@ export const appRoutes: Routes = [
   { path: 'ask', component: AskComponent },
   { path: 'submit', component: SubmitComponent },
   { path: 'user/:id', component: UserComponent },
+  { path: 'user/:id/edit', component: EditUserComponent },
   { path: 'contribution/:id/edit', component: EditContributionComponent },
   { path: 'contribution/:contribution_id/edit/:id', component: EditCommentComponent },
   { path: 'contribution/:contribution_id/comments/:id/reply', component: NewReplyComponent },

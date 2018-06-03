@@ -1,5 +1,4 @@
-
-<div class="user-component" >
+<div class="user-component">
   <div *ngIf="userService.userShow != undefined" style="margin-bottom: 0px;">
     <p>
       <span class="tag">Username: </span>
@@ -32,5 +31,6 @@
       </a>
     </p>
   </div>
+  <button *ngIf="userService.userShow?.id == authService.currentUserID" style="background-color: #ff4e4e; margin-left: 30px;"
+    class="btn btn-primary" (click)="editUser()">edit</button>
 </div>
-

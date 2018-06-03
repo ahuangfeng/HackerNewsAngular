@@ -1,0 +1,25 @@
+<div>
+  <h3 style="margin-top: 20px;">
+    Edit User
+  </h3>
+  <p class="warning">
+    {{errorMessage}}
+  </p>
+  <form [formGroup]="editUserForm">
+
+    <div class="form-group">
+      <label class="center-block">Email:
+        <input class="form-control" formControlName="email">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label class="center-block">About:
+        <textarea class="form-control" formControlName="about"></textarea>
+      </label>
+    </div>
+
+    <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="editUser()">submit</button>
+  </form>
+
+</div>

@@ -125,8 +125,12 @@ export class HttpService {
   }
 
   postReply(contribution_id, id, body) {
-    return this.http.post(environment.apiServer + 'contributions/'+ contribution_id + '/comments/' + id + '/reply', {body}, this.getHeaders()).toPromise();
+    return this.http.post(environment.apiServer + 'contributions/' + contribution_id + '/comments/' + id + '/reply', { body }, this.getHeaders()).toPromise();
+  }
 
+  editUser(id, email, about) {
+    var body = { email: email, about: about };
+    return this.http.put(environment.apiServer + 'users/' + id, body, this.getHeaders()).toPromise();
   }
 
 }
