@@ -16,6 +16,7 @@ export class SingleCommentComponent implements OnInit {
   @Input() comment: any;
 
   commentShow: Comment;
+  deleted = false;
 
   constructor(private authService: AuthService, private router: Router, private httpService:HttpService, public threadsService:ThreadsService) { }
 
@@ -39,6 +40,7 @@ export class SingleCommentComponent implements OnInit {
     this.httpService.deleteComment(this.commentShow.contribution_id,this.commentShow.id).then(data => {
       console.log("deleted", data);
       this.threadsService.getThreads();
+      this.deleted = true;
     }).catch(this.handleError);
   }
 
