@@ -28,9 +28,6 @@ export class SingleCommentComponent implements OnInit {
     this.router.navigateByUrl('/user/'+this.authService.currentUserID);
   }
 
-  reply(){
-    console.log("TODO: reply!", this.commentShow.id);
-  }
 
   ownComment(){
     return this.authService.currentUserID == this.commentShow.user_id;

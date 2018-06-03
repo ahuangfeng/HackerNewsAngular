@@ -1,0 +1,19 @@
+<div>
+  <h3 style="margin-top: 20px;">
+   Add a reply
+  </h3>
+  <p class="warning">
+    {{errorMessage}}
+  </p>
+  <label for="title">Reply: </label>
+  <strong id="title"> {{comment?.body}}</strong>
+  <form [formGroup]="replyForm">
+    <div class="form-group">
+      <label class="center-block">New reply:
+        <textarea class="form-control" formControlName="reply"></textarea>
+      </label>
+    </div>
+    <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="createReply()">add a reply</button>
+  </form>
+
+</div>

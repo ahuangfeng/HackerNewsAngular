@@ -124,4 +124,9 @@ export class HttpService {
     return this.http.delete(environment.apiServer + 'contributions/' + contribution_id, this.getHeaders()).toPromise();
   }
 
+  postReply(contribution_id, id, body) {
+    return this.http.post(environment.apiServer + 'contributions/'+ contribution_id + '/comments/' + id + '/reply', {body}, this.getHeaders()).toPromise();
+
+  }
+
 }
