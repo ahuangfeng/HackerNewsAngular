@@ -36,10 +36,6 @@ export class SingleCommentComponent implements OnInit {
     return this.authService.currentUserID == this.commentShow.user_id;
   }
 
-  edit(){
-    console.log("TODO: Edit!", this.commentShow.id);
-  }
-  
   delete(){
     this.httpService.deleteComment(this.commentShow.contribution_id,this.commentShow.id).then(data => {
       console.log("deleted", data);

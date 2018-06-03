@@ -29,17 +29,13 @@ export class SingleContributionComponent implements OnInit {
   delete() {
     this.httpService.deleteContribution(this.contributionShow.id).then(data => {
       console.log("deleted", data);
+      this.contributionService.getNewContributions();
       if(this.contributionShow.hasUrl()){
         this.contributionService.getMainContributions();
-        this.contributionService.getNewContributions();
       }else{
         this.contributionService.getAskContributions();
       }
     }).catch(this.handleError);
-  }
-
-  edit() {
-    console.log("TODO: Edit;");
   }
 
   update() {

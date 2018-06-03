@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from "../../providers/http.service";
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Contribution } from '../../model/contribution';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../providers/auth.service';
 
 
 @Component({
@@ -22,12 +23,16 @@ export class FullContributionComponent implements OnInit {
 
   currentID;
 
-  constructor(private route: ActivatedRoute, private httpService: HttpService, private router: Router) {
+  constructor(private route: ActivatedRoute, private httpService: HttpService, public authService:AuthService) {
     this.currentID = this.getContributionId();
     this.getContribution(this.currentID);
   }
 
   ngOnInit() {
+  }
+
+  delete(){
+    console.log("TODO: delete");
   }
 
   getContribution(id) {

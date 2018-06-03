@@ -10,5 +10,10 @@
   /* visibility: hidden; */
   color: #ff4e4e;
 }
+.link{
+  color: #b92b27 !important;
+  cursor: pointer;
+  text-decoration: none !important;
+}
 
 

@@ -5,3 +5,4 @@
 - afegir una variable a la contribution per saber si el user ha votat o no --> fet
 - afegir una variable al comentari per saber si el user ha votat o no --> fet
 - order by a comments per a que els ordeni per ordre de creacio --> fet
+- canvi en el login per a unificar els usuaris de Angular i usuaris de Rails --> fet

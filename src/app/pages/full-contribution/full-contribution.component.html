@@ -6,14 +6,24 @@
   <strong id="title"> {{contribution?.title}}</strong>
   <br>
   <div *ngIf="contribution?.hasUrl()">
-    <label for="url" >Url: </label>
+    <label for="url">Url: </label>
     <a href="{{contribution?.url}}"> {{contribution?.url}}</a>
     <br>
   </div>
   <div *ngIf="!contribution?.hasUrl()">
-    <label for="ask" >Text: </label>
+    <label for="ask">Text: </label>
     <strong id="ask"> {{contribution?.text}}</strong>
     <br>
+  </div>
+  <div *ngIf="contribution?.user_id == authService.currentUserID">
+    <!-- <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="edit()">edit</button>
+      <button style="background-color: #ff4e4e" class="btn btn-primary" (click)="delete()">delete</button> -->
+    <a class="link" [routerLink]="['/contribution/'+contribution.id+'/edit']" routerLinkActive="active">
+      edit
+    </a> |
+    <a class="link" (click)="delete()">
+      delete
+    </a>
   </div>
   <form [formGroup]="commentForm">
     <div class="form-group">
