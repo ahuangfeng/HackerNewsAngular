@@ -28,7 +28,6 @@ import { FullContributionComponent } from './pages/full-contribution/full-contri
 import { SingleContributionComponent } from './components/single-contribution/single-contribution.component';
 import { SingleCommentComponent } from './components/single-comment/single-comment.component';
 import { EditContributionComponent } from './pages/edit-contribution/edit-contribution.component';
-import { ReplyComponent } from './pages/reply/reply.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { EditCommentComponent } from './pages/edit-comment/edit-comment.component';
 import { NewReplyComponent } from './pages/new-reply/new-reply.component';
@@ -50,7 +49,6 @@ import { NewReplyComponent } from './pages/new-reply/new-reply.component';
     SingleContributionComponent,
     SingleCommentComponent,
     EditContributionComponent,
-    ReplyComponent,
     PageNotFoundComponent,
     EditCommentComponent,
     NewReplyComponent,

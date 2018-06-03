@@ -26,6 +26,9 @@ export class NewReplyComponent implements OnInit {
     this.getCommentById(this.contributionId,this.commentId);
   }
 
+  ngOnInit() {
+  }
+
   getContributionId(): string {
     return this.route.snapshot.paramMap.get('contribution_id');
   }
@@ -43,14 +46,10 @@ export class NewReplyComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
-
   createReply() {
-    if (this.replyForm.value.reply === "") {
+    if (!this.replyForm.valid) {
       this.errorMessage = "You must enter a reply."
-    }
-    else {
+    } else {
       this.httpService.postReply(this.contributionId, this.commentId, this.replyForm.value.reply).then(data => {
         this.router.navigateByUrl('/contribution/'+ this.contributionId);
       }).catch(err => {
