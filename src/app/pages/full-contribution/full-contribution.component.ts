@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Contribution } from '../../model/contribution';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../providers/auth.service';
+import { ContributionService } from '../../providers/contribution.service';
 
 
 @Component({
@@ -22,13 +23,29 @@ export class FullContributionComponent implements OnInit {
   });
 
   currentID;
+  subscriber = undefined;
 
-  constructor(private route: ActivatedRoute, private httpService: HttpService, public authService:AuthService, private router: Router) {
+  constructor(
+    private route: ActivatedRoute, 
+    private httpService: HttpService, 
+    public authService:AuthService, 
+    private router: Router,
+    public contributionService: ContributionService
+  ) {
     this.currentID = this.getContributionId();
     this.getContribution(this.currentID);
+    this.subscriber = this.contributionService.updateCommentsSubject.subscribe(update => {
+      this.getComments(this.currentID);
+    });
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy(){
+    if(this.subscriber != undefined){
+      this.subscriber.unsubscribe();
+    }
   }
 
   delete(){

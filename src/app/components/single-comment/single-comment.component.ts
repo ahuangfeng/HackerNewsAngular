@@ -4,6 +4,7 @@ import { AuthService } from '../../providers/auth.service';
 import { Router } from '@angular/router';
 import { HttpService } from '../../providers/http.service';
 import { ThreadsService } from '../../providers/threads.service';
+import { ContributionService } from '../../providers/contribution.service';
 
 
 @Component({
@@ -18,7 +19,12 @@ export class SingleCommentComponent implements OnInit {
   commentShow: Comment;
   deleted = false;
 
-  constructor(private authService: AuthService, private router: Router, private httpService:HttpService, public threadsService:ThreadsService) { }
+  constructor(private authService: AuthService, 
+    private router: Router, 
+    private httpService:HttpService, 
+    public threadsService:ThreadsService,
+    public contributionService:ContributionService
+  ) { }
 
   ngOnInit() {
     this.commentShow = new Comment(this.comment);
@@ -27,7 +33,6 @@ export class SingleCommentComponent implements OnInit {
   me(){
     this.router.navigateByUrl('/user/'+this.authService.currentUserID);
   }
-
 
   ownComment(){
     return this.authService.currentUserID == this.commentShow.user_id;
@@ -42,9 +47,10 @@ export class SingleCommentComponent implements OnInit {
   }
 
   update(){
-    this.httpService.getCommentById(this.commentShow.contribution_id,this.commentShow.id).then(data => {
-      this.commentShow = new Comment(data['comment']);
-    }).catch(this.handleError);
+    this.contributionService.updateCommentsSubject.next(true);
+    // this.httpService.getCommentById(this.commentShow.contribution_id,this.commentShow.id).then(data => {
+    //   this.commentShow = new Comment(data['comment']);
+    // }).catch(this.handleError);
   }
 
   vote(){

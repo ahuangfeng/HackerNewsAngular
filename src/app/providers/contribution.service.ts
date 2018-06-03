@@ -11,6 +11,8 @@ export class ContributionService {
   public newContributions = [];
   public askContributions = [];
 
+  updateCommentsSubject: Subject<any> = new Subject();
+
   constructor(private httpService: HttpService) {
   }
 

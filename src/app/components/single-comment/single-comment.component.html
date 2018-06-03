@@ -38,8 +38,8 @@
   </div>
   <div *ngIf="commentShow.replies">
     <div *ngIf="commentShow.replies.length > 0">
-      <div class="reply" *ngFor="let comment of commentShow.replies">
-        <app-single-comment [comment]="comment"></app-single-comment>
+      <div class="reply" *ngFor="let commentReply of commentShow.replies">
+        <app-single-comment [comment]="commentReply"></app-single-comment>
       </div>
     </div>
   </div>
