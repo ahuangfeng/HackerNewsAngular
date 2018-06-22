@@ -1,24 +1,22 @@
 
 # Hacker News Front-End with Angular
 
-## Integrants del equip
-- Alex Huang Feng
-- Pau González Montiel
-- Carla Varea Parra
+## Autors del projecte
+- [Alex Huang Feng](https://github.com/ahuangfeng)
+- [Pau González Montiel](https://github.com/pgonzalez96)
+- [Carla Varea Parra](https://github.com/carlavarea)
 
 ## Aplicació desplegada a Heroku
 [Aplicació a Heroku](http://g11d-hackernewsangular.herokuapp.com/)
 
-## Repositori Back-End
-[Bitbucket](https://bitbucket.org/ahuangfeng/g11d_hackernews/)
-
-## Angular Init Project (CLI)
-[Angular](https://cli.angular.io/)
+## Repositori Back-End (versió Rails)
+[Repo Github](https://github.com/ahuangfeng/HackerNewsRails)
 
 ## YAML per al swagger
 [Swagger](https://g11d-hackernews.herokuapp.com/api/api.yaml)
 
-### Per a fer deploy a Heroku
-- Si s'ha creat una nova taula a la BD : `heroku run rake db:migrate`
-- Si dona un error chungo al fer el migrate a heroku:  `heroku pg:reset`, i despres fer el migrate un altre cop
-- Deploy : `git push heroku master`
+## Deploy web app
+- Clonar projecte
+- `npm install` per instalar dependencies
+- `npm start` per a executar servidor 
+- `ng build --aot --prod` per a fer build de la aplicació i desplegar en servidor web (nginx o similar)
